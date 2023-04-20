@@ -1,2 +1,2 @@
 # Links to my github pages.
-[Viable Websites](https://vincentonepointone.github.io/Viable-Websites/public/index.html)
+[Github pages pages](https://vincentonepointone.github.io)
