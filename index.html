@@ -1,73 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Github Pages, Pages</title>
     <style>
-        h3 {
-            margin-bottom: 0;
-        }
-        h3, p, h1, h2, h1, u, hr {
-            color: bisque;
-        }
-        a {
-            color:rgb(36, 219, 30)
-        }
-        body {
-            background: rgb(56, 51, 51);
+      h3 {
+        margin-bottom: 0;
+      }
+      h3,
+      p,
+      h1,
+      h2,
+      h1,
+      u,
+      hr {
+        color: bisque;
+      }
+      h1 {
+        text-align: center;
+      }
+      a {
+        color: rgb(36, 219, 30);
+      }
+      body {
+        background: rgb(56, 51, 51);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 5vh 0;
+      }
+
+      .container {
+        padding: 1vw 10vw;
+        width: 45%;
+        border: 2px solid bisque;
+        border-radius: 1vw;
+        box-shadow: 0.8em 0.8em 1em 0.5em rgb(36, 218, 30);
+        animation-name: example;
+        animation-duration: 10s;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+      }
+            @keyframes example {
+  0%   {box-shadow: 0.8em 0.8em 9em 1em rgb(36, 218, 30);}
+  25%  {box-shadow: 0.8em 0.8em 9em 1em rgb(218, 30, 30);}
+  50%  {box-shadow: 0.8em 0.8em 9em 1em rgb(86, 30, 218);}
+  75%  {box-shadow: 0.8em 0.8em 9em 1em rgb(30, 65, 218);}
+  100% {box-shadow: 0.8em 0.8em 9em 1em rgb(23, 255, 2);}
+      }
+      @media only screen and (max-width: 600px) {
+        h1 {
+          font-size: 1.3rem;
         }
         .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 45%; 
-            margin: auto; 
-            border: 2px solid bisque;
+          width: 70%;
         }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <i> <u><h1>Github Pages, Pages</h1></u> </i>
-         <h3>CSS road signs and study material</h3>
-        <a href="https://vincentonepointone.github.io/css-road-signs-and-licence-studymaterial/index.html">CSS road signs</a>
-        <br>
-        <a href="https://github.com/vincentonepointone/css-road-signs-and-licence-studymaterial">Repo</a>
-        <hr>
-        <h3>Meme Site hosted on GCP</h3>
-        <a href="https://meme-site-login.ew.r.appspot.com/">Meme Site</a>
-        <br>
-        <a href="https://github.com/vincentonepointone/meme-site">Repo (Forked from)</a>
-        <hr>
-        <h3>Freelance Website</h3>
-        <a href="https://vincentonepointone.github.io/Viable-Websites/public/index.html">Viabe Websites</a>
-        <br>
-        <a href="https://github.com/vincentonepointone/Viable-Websites">Repo</a>
-        <hr>
-        <h3>Task Tracker</h3>
-        <a href="https://vincentonepointone.github.io/LifesExecutions/index.html">Lifes' Executions</a>
-        <br>
-        <a href="https://github.com/vincentonepointone/LifesExecutions">Repo</a>
-        <hr>
-        <h3>Old Resume</h3>
-        <a href="https://vincentonepointone.github.io/resume/">Old Resume</a>
-        <br>
-        <a href="https://github.com/vincentonepointone/resume">Repo</a> 
-        <hr>
-        <h3>Birthday Card</h3>
-        <a href="https://vincentonepointone.github.io/happy/">Happy</a>
-        <br>
-        <a href="https://github.com/vincentonepointone/happy">Repo</a>
-        <hr>
-        <h3>Bootsrap PC Store</h3>
-        <a href="https://vincentonepointone.github.io/PC-Catalog/public/index.html">PC Store</a>
-        <br>
-        <a href="https://github.com/vincentonepointone/PC-Catalog">Repo</a>
+      <i>
+        <u><h1>Github Pages, Pages</h1></u>
+      </i>
+      <h3>CSS road signs and study material</h3>
+      <a
+        href="https://vincentonepointone.github.io/css-road-signs-and-licence-studymaterial/index.html"
+        >CSS road signs</a
+      >
+      <br />
+      <a
+        href="https://github.com/vincentonepointone/css-road-signs-and-licence-studymaterial"
+        >Repo</a
+      >
+      <hr />
+      <h3>Meme Site hosted on GCP</h3>
+      <a href="https://meme-site-login.ew.r.appspot.com/">Meme Site</a>
+      <br />
+      <a href="https://github.com/vincentonepointone/meme-site"
+        >Repo (Forked from)</a
+      >
+      <hr />
+      <h3>Freelance Website</h3>
+      <a
+        href="https://vincentonepointone.github.io/Viable-Websites/public/index.html"
+        >Viabe Websites</a
+      >
+      <br />
+      <a href="https://github.com/vincentonepointone/Viable-Websites">Repo</a>
+      <hr />
+      <h3>Task Tracker</h3>
+      <a href="https://vincentonepointone.github.io/LifesExecutions/index.html"
+        >Lifes' Executions</a
+      >
+      <br />
+      <a href="https://github.com/vincentonepointone/LifesExecutions">Repo</a>
+      <hr />
+      <h3>Old Resume</h3>
+      <a href="https://vincentonepointone.github.io/resume/">Old Resume</a>
+      <br />
+      <a href="https://github.com/vincentonepointone/resume">Repo</a>
+      <hr />
+      <h3>Birthday Card</h3>
+      <a href="https://vincentonepointone.github.io/happy/">Happy</a>
+      <br />
+      <a href="https://github.com/vincentonepointone/happy">Repo</a>
+      <hr />
+      <h3>Bootsrap PC Store</h3>
+      <a
+        href="https://vincentonepointone.github.io/PC-Catalog/public/index.html"
+        >PC Store</a
+      >
+      <br />
+      <a href="https://github.com/vincentonepointone/PC-Catalog">Repo</a>
     </div>
-
-    
-</body>
+  </body>
 </html>
