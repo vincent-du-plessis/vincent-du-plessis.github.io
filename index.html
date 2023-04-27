@@ -15,23 +15,35 @@
       h1,
       h2,
       h1,
-      u,
-      hr {
+      u{
         color: bisque;
       }
       h1 {
         text-align: center;
       }
       a {
-        font-size: 24px;
+        font-size: 20px;
         color: rgb(36, 219, 30);
         border: 0.5px solid white;
         text-decoration: none;
         background: black;
-        padding: 10px 20px;
+        padding-left: 1em;
         line-height: 60px;
-      }
+        display: block;
+        width: 80%;
 
+
+      }
+      hr {
+        color: rgb(36, 219, 30);
+        margin-top: 2em;
+      }
+      h3 {
+        margin-top  : 2em;
+        margin-bottom:1em;
+        font-size: 24px;
+        text-decoration: underline;
+      }
       a:hover, a:focus {
         animation-name: link;
         animation-duration: 10s;
@@ -39,19 +51,20 @@
         animation-iteration-count: infinite;
       }
       body {
+        font-family:Verdana, Geneva, Tahoma, sans-serif;
         background: black;
         display: flex;
         justify-content: center;
         align-items: center;
         margin: 5vh 0;
+        user-select: none;
       }
 
       .container {
         
         padding: 1vw 10vw;
         width: 45%;
-        border: 2px solid bisque;
-        border-radius: 1vw;
+        border: 0.5px solid bisque;
         box-shadow: 0.8em 0.8em 1em 0.5em rgb(36, 218, 30);
         animation-name: example;
         animation-duration: 10s;
@@ -95,13 +108,17 @@
       }
       @media only screen and (max-width: 600px) {
         h1 {
-          font-size: 1.3rem;
+          font-size: 1.5rem;
+        }
+        h3 {
+          font-size: 1rem;
         }
         .container {
           width: 70%;
         }
         a {
-          font-size: 18px;
+          font-size: 0.8rem;
+          line-height: 40px;
         }
       }
     </style>
