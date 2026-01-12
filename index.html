@@ -7,10 +7,25 @@
     <link rel="shortcut icon" href="v-icon.webp" type="image/webp" />
     <title>Github Pages, Pages</title>
     <style>
+      #profile-picture {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        display: block;
+        margin-bottom: 1em;
+
+      }
+      #bioContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
       h3 {
         margin-bottom: 0;
       }
       h3,
+      h5,
       p,
       h1,
       h2,
@@ -22,7 +37,7 @@
         text-align: center;
       }
       a {
-        font-size: 20px;
+        font-size: 0.8em;
         color: rgb(36, 219, 30);
         border: 0.5px solid white;
         text-decoration: none;
@@ -30,9 +45,16 @@
         padding-left: 1em;
         line-height: 60px;
         display: block;
-        width: 80%;
+        margin-bottom: 1em;
+        margin-left: 0.8em;
+        max-width: 100%;     /* prevent expanding beyond container */
+        white-space: nowrap;   /* prevent wrapping to next line */
+        overflow: hidden;      /* hide anything that overflows */
+        text-overflow: ellipsis; /* show "..." at the end */
 
-
+      }
+      h5 {
+        margin-top: 0;
       }
       hr {
         color: rgb(36, 219, 30);
@@ -41,8 +63,9 @@
       h3 {
         margin-top  : 2em;
         margin-bottom:1em;
-        font-size: 24px;
+        font-size: 1.2em;
         text-decoration: underline;
+
       }
       a:hover, a:focus {
         animation-name: link;
@@ -61,9 +84,8 @@
       }
 
       .container {
-        
-        padding: 1vw 10vw;
-        width: 45%;
+        width: 50%;
+        padding: 2em 8em;
         border: 0.5px solid bisque;
         box-shadow: 0.8em 0.8em 1em 0.5em rgb(36, 218, 30);
         animation-name: example;
@@ -119,17 +141,24 @@
         a {
           font-size: 0.8rem;
           line-height: 40px;
+          margin-bottom: 1em;
         }
       }
     </style>
   </head>
   <body>
     <div class="container">
+      <header id="bioContainer">
+
+      </header>
       <i>
-        <u><h1>Github Pages, Pages</h1></u>
+        <u><h1>Dynamic, Github Pages, Pages</h1></u>
       </i>
-      <h3>CSS road signs and study material</h3>
-      <a
+      <!-- <h3>CSS road signs and study material</h3> -->
+      <section id='linksContainer'>
+          <h5>Loading...</h5>
+      </section>
+      <!-- <a
         href="https://vincent-du-plessis.github.io/css-road-signs-and-licence-studymaterial/index.html"
         >CSS road signs</a
       >
@@ -138,8 +167,8 @@
         href="https://github.com/vincent-du-plessis/css-road-signs-and-licence-studymaterial"
         >Repo</a
       >
-      <hr />
-      <h3>Meme Site hosted on GCP</h3>
+      <hr /> -->
+      <!-- <h3>Meme Site hosted on GCP</h3>
       <a href="https://meme-site-login.ew.r.appspot.com/">Meme Site</a>
       <br />
       <a href="https://github.com/vincent-du-plessis/meme-site"
@@ -177,7 +206,92 @@
         >PC Store</a
       >
       <br />
-      <a href="https://github.com/vincent-du-plessis/PC-Catalog">Repo</a>
+      <a href="https://github.com/vincent-du-plessis/PC-Catalog">Repo</a> -->
     </div>
   </body>
+<script>
+try {
+  async function listPagesSites() {
+    try {
+      const response = await fetch("https://api.github.com/users/vincent-du-plessis/repos", {
+        headers: {
+          "Accept": "application/vnd.github.v3+json"
+        }
+      });
+
+      const repos = await response.json();
+
+      // Filter repos with GitHub Pages enabled
+      const pagesRepos = repos.filter(repo => repo.has_pages);
+
+      // Map to URLs
+      const urls = pagesRepos.map(({ full_name }) =>
+        `https://vincent-du-plessis.github.io/${full_name}`
+      );
+
+      // Render links with description
+      const linksContainer = document.getElementById('linksContainer');
+      linksContainer.innerHTML = ''; // Clear loading text
+      pagesRepos.forEach(({ full_name, description }) => {
+        const linkElement = document.createElement('a');
+        const repoLinkElement = document.createElement('a');
+
+        const h3Element = document.createElement('h3');
+        const pElement = document.createElement('h3');
+        pElement.textContent = description || full_name.split("/")[1] + " page";
+        repoLinkElement.href = `https://github.com/vincent-du-plessis/${full_name.split("/")[1]}`;
+        repoLinkElement.textContent = "Repo";
+        linkElement.href = `https://vincent-du-plessis.github.io/${full_name.split("/")[1]}`;
+        linkElement.textContent = full_name.split("/")[1]; // show repo name instead of full URL
+
+        linksContainer.appendChild(pElement);
+        linksContainer.appendChild(linkElement);
+        linksContainer.appendChild(repoLinkElement);
+        linksContainer.appendChild(h3Element);
+      });
+    } catch (err) {
+      throw err; // bubble up to outer catch
+    }
+  }
+
+  async function me() {
+    try {
+      const response = await fetch("https://api.github.com/users/vincent-du-plessis", {
+        headers: {
+          "Accept": "application/vnd.github.v3+json"
+        }
+      });
+
+      const githubAccountInfo = await response.json();
+      const bioContainer = document.getElementById('bioContainer');
+      const imageElement = document.createElement('img');
+      const nameh2Element = document.createElement('h2');
+      imageElement.src = githubAccountInfo.avatar_url;
+      imageElement.alt = "Profile Picture";
+      imageElement.id = "profile-picture";
+      const h2Element = document.createElement('h5');
+      nameh2Element.textContent = "Vincent du Plessis's";
+      h2Element.textContent = githubAccountInfo.bio || "Vincent du Plessis";
+
+      // fixed typo: imagdeElement → imageElement
+      bioContainer.appendChild(imageElement);
+      bioContainer.appendChild(h2Element);
+      bioContainer.appendChild(nameh2Element);
+
+      console.log(githubAccountInfo);
+    } catch (err) {
+      throw err; // bubble up to outer catch
+    }
+  }
+
+  // Run both
+  listPagesSites();
+  me();
+
+} catch (error) {
+  document.body.innerHTML += "<h1>Failed to load content. Please try again later.</h1>";
+  console.error("Error fetching data:", error);
+}
+</script>
+
 </html>
