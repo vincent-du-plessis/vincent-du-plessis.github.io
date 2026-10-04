@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="light">
+<html lang="en" data-bs-theme="dark">
 <head>
     <meta name="robots" content="index, follow">
 <meta http-equiv="Content-Security-Policy" 
@@ -72,20 +72,20 @@
 <body>
     <h1 class="text-center bg-warning text-dark">Under Construction!</h1>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
+        <div class="container-fluid float-left">
 
             <img src="./assets/Images/navpic.webp" alt="Vincent du Plessis Navigation Image" width="30" height="30">
-
-            <h3 class="navbar-brand" href="#">Welcome to my Page!</h3>
-            
-            <button id="themeToggle" class="btn btn-outline-secondary">
-                Toggle Dark Mode
-            </button>
+            <div>
+                <button id="themeToggle" class="btn btn-outline-secondary border-0">
+                    <img id="themIconImage" src="./assets/icons/moon-fill.svg" alt="Dark mode" width="20" height="20">
+                </button>
 
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item text-center">
@@ -111,7 +111,7 @@
     </nav>
       <main class="container my-5">
     <section class="row">
-
+     <h3 class="navbar-brand" href="#">Welcome to my Page!</h3>
     </section>
   </main>
     <script src="./assets/bootstrap-5.3.8-dist/js/bootstrap.bundle.js" ></script>
@@ -119,13 +119,16 @@
         const toggle = document.getElementById('themeToggle');
         toggle.addEventListener('click', () => {
             const html = document.documentElement;
+            const themIconImage = document.getElementById('themIconImage')
             if (html.getAttribute('data-bs-theme') === 'dark') {
             html.setAttribute('data-bs-theme', 'light');
+            themIconImage.src = './assets/icons/moon-fill.svg'
             } else {
             html.setAttribute('data-bs-theme', 'dark');
+            themIconImage.src = './assets/icons/brightness-high-fill.svg'
             }
         });
-    </script>
+</script>
 
 </body>
 </html>
