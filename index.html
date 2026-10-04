@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="light">
 <head>
     <meta name="robots" content="index, follow">
 <meta http-equiv="Content-Security-Policy" 
@@ -77,7 +77,12 @@
             <img src="./assets/Images/navpic.webp" alt="Vincent du Plessis Navigation Image" width="30" height="30">
 
             <h3 class="navbar-brand" href="#">Welcome to my Page!</h3>
-           
+            
+            <button id="themeToggle" class="btn btn-outline-secondary">
+                Toggle Dark Mode
+            </button>
+
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -106,17 +111,21 @@
     </nav>
       <main class="container my-5">
     <section class="row">
-      <article class="col-md-8">
-        <h1>Main Content Area</h1>
-        <p>This is where your unique page content goes.</p>
-      </article>
 
-      <aside class="col-md-4 bg-light p-3">
-        <h2>Sidebar</h2>
-        <p>Secondary info, links, or ads.</p>
-      </aside>
     </section>
   </main>
     <script src="./assets/bootstrap-5.3.8-dist/js/bootstrap.bundle.js" ></script>
+    <script>
+        const toggle = document.getElementById('themeToggle');
+        toggle.addEventListener('click', () => {
+            const html = document.documentElement;
+            if (html.getAttribute('data-bs-theme') === 'dark') {
+            html.setAttribute('data-bs-theme', 'light');
+            } else {
+            html.setAttribute('data-bs-theme', 'dark');
+            }
+        });
+    </script>
+
 </body>
 </html>
