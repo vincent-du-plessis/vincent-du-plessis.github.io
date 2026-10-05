@@ -2,7 +2,7 @@
 <html lang="en" data-bs-theme="dark">
 <head>
     <meta name="robots" content="index, follow">
-<meta http-equiv="Content-Security-Policy" 
+    <meta http-equiv="Content-Security-Policy" 
       content="default-src 'self'; 
                style-src 'self' https://cdn.jsdelivr.net; 
                script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; 
@@ -136,13 +136,18 @@
     <script src="./assets/bootstrap-5.3.8-dist/js/bootstrap.bundle.js" ></script>
     <script>
         const toggle = document.getElementById('themeToggle');
+  
+        (toggle)
         toggle.addEventListener('click', () => {
+          
             const html = document.documentElement;
             const themIconImage = document.getElementById('themIconImage')
-            if (html.getAttribute('data-bs-theme') === 'dark') {
+            if (html.getAttribute('data-bs-theme') !== 'dark') {
+ 
             html.setAttribute('data-bs-theme', 'light');
             themIconImage.src = './assets/icons/moon-fill.svg'
             } else {
+          
             html.setAttribute('data-bs-theme', 'dark');
             themIconImage.src = './assets/icons/brightness-high-fill.svg'
             }
