@@ -89,44 +89,50 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item text-center">
-                    <a class="nav-link active" aria-current="page" href="#">Welcome</a>
-                </li>
-                <li class="nav-item text-center">
-                    <a class="nav-link" href="#">Blog</a>
-                </li>
-
-                <li class="nav-item text-center">
-                    <a class="nav-link" href="#">About</a>
-                </li>
-                <li class="nav-item text-center">
-                    <a class="nav-link" href="#">Contact</a>
-                </li>
-                <li class="nav-item text-center">
-                    <a class="nav-link" href="#">Games</a>
-                </li>
+                <li class="nav-item"><a class="nav-link" href="#Welcome" data-route="welcome">Welcome</a></li>
+                <li class="nav-item"><a class="nav-link" href="#blog" data-route="blog">Blog</a></li>
+                <li class="nav-item"><a class="nav-link" href="#about" data-route="about">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact" data-route="contact">Contact</a></li>
+                <li class="nav-item"><a class="nav-link" href="#games" data-route="games">Games</a></li>
             </ul>
 
             </div>
         </div>
     </nav>
-      <main>
-    <section class=" p-0">
-        <header">
-            <div class="hero-bg" aria-hidden="true"></div>
+    <main>
+        <section id="Welcome" class="p-0" data-route="welcome">
+            <header">
+                <div class="hero-bg" aria-hidden="true"></div>
 
-            <div class="hero-content hero-content-bg text-center text-white py-5">
-                <h1 class="display-4 fw-bold my-4">Welcome to my Site!</h1>
-                <p class="lead mb-4">I develop on the web. 
-                    Explore my work or play a game.</p>
-                <div class="d-flex justify-content-center gap-2">
-                <a href="#work" class="btn btn-primary btn-lg">About</a>
-                <a href="#learn" class="btn btn-outline-light btn-lg">Game</a>
+                <div class="hero-content hero-content-bg text-center text-white py-5">
+                    <h1 class="display-4 fw-bold my-4"><span class="capital-red">W</span>elcome to my <span class="capital-red">S</span>ite!</h1>
+                    <p class="lead mb-4">I program on the web. 
+                            <span class="capital-red">E</span>xplore my work or play a <span class="capital-red">G</span>ame.</p>
+                    <div class="d-flex justify-content-center gap-2">
+                    <a href="#work" class="btn btn-primary btn-lg">About</a>
+                    <a href="#learn" class="btn btn-outline-light btn-lg">Game</a>
+                    </div>
                 </div>
-            </div>
-        </header>
-    </section>
-  </main>
+            </header>
+            <!-- server-rendered home content (your hero etc.) -->
+        </section>
+
+        <section id="blog" data-route="blog" hidden>
+            <h3>Blog</h3>
+        </section>
+
+        <section id="about" data-route="about" hidden>
+           <h3>About</h3>
+        </section>
+
+        <section id="contact" data-route="contact" hidden>
+            <h3>Contact</h3> 
+        </section>
+
+        <section id="games" data-route="games" hidden>
+            <h3>Games</h3>
+        </section>
+    </main>
     <script src="./assets/bootstrap-5.3.8-dist/js/bootstrap.bundle.js" ></script>
     <script>
         const toggle = document.getElementById('themeToggle');
@@ -141,7 +147,94 @@
             themIconImage.src = './assets/icons/brightness-high-fill.svg'
             }
         });
-</script>
+    </script>
+
+    <script>
+        // Combined theme toggle + simple hash router (show/hide only)
+        (function () {
+            // Theme toggle
+            const toggle = document.getElementById('themeToggle');
+            const icon = document.getElementById('themeIconImage');
+            const html = document.documentElement;
+
+            const ICONS = {
+            light: '/assets/icons/brightness-hight-fill.svg', // shown when theme is light
+            dark:  '/assets/icons/moon-fill.svg'              // shown when theme is dark
+            };
+
+            function applyTheme(theme) {
+            html.setAttribute('data-bs-theme', theme);
+            toggle.setAttribute('aria-pressed', theme === 'dark');
+            if (icon) {
+                icon.src = theme === 'dark' ? ICONS.dark : ICONS.light;
+                icon.alt = theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme';
+            }
+            try { localStorage.setItem('theme', theme); } catch (e) {}
+            }
+
+            // init theme from storage or existing attribute
+            const saved = (function () {
+            try { return localStorage.getItem('theme'); } catch (e) { return null; }
+            })();
+            applyTheme(saved || html.getAttribute('data-bs-theme') || 'dark');
+
+            toggle.addEventListener('click', () => {
+            const next = html.getAttribute('data-bs-theme') === 'dark' ? 'light' : 'dark';
+            applyTheme(next);
+            });
+
+            // Simple hash router: show/hide sections only
+            const sections = Array.from(document.querySelectorAll('main [data-route]'));
+            const app = document.getElementById('app');
+
+            function showRoute(route) {
+            let found = false;
+            sections.forEach(sec => {
+                const is = sec.getAttribute('data-route') === route;
+                sec.hidden = !is;
+                if (is) found = true;
+            });
+
+            if (!found) {
+                // fallback to welcome
+                location.hash = '#welcome';
+                return;
+            }
+
+            // update active nav link
+            document.querySelectorAll('a[data-route]').forEach(a => {
+                a.classList.toggle('active', a.getAttribute('data-route') === route);
+            });
+
+            // update title and move focus to main for accessibility
+            document.title = route.charAt(0).toUpperCase() + route.slice(1) + ' - Vincent du Plessis';
+            if (app) {
+                app.focus({ preventScroll: true });
+            }
+            }
+
+            function currentRoute() {
+            return (location.hash || '#welcome').replace('#', '').toLowerCase();
+            }
+
+            // initialize
+            showRoute(currentRoute());
+
+            // handle back/forward
+            window.addEventListener('hashchange', () => showRoute(currentRoute()));
+
+            // intercept internal hash links to ensure consistent behavior
+            document.addEventListener('click', (e) => {
+            const a = e.target.closest('a[href^="#"]');
+            if (!a) return;
+            // allow external targets or downloads
+            if (a.target && a.target !== '_self') return;
+            e.preventDefault();
+            const route = (a.getAttribute('href') || '#welcome').replace('#', '').toLowerCase();
+            location.hash = '#' + route;
+            });
+        })();
+    </script>
 
 </body>
 </html>
