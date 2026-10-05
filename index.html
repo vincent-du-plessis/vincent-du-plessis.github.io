@@ -99,7 +99,7 @@
             </div>
         </div>
     </nav>
-    <main>
+    <main id="app">
         <section id="Welcome" class="p-0" data-route="welcome">
             <header">
                 <div class="hero-bg" aria-hidden="true"></div>
@@ -109,8 +109,8 @@
                     <p class="lead mb-4">I program on the web. 
                             <span class="capital-red">E</span>xplore my work or play a <span class="capital-red">G</span>ame.</p>
                     <div class="d-flex justify-content-center gap-2">
-                    <a href="#work" class="btn btn-primary btn-lg">About</a>
-                    <a href="#learn" class="btn btn-outline-light btn-lg">Game</a>
+                    <a href="#about"  class="btn btn-primary btn-lg">About</a>
+                    <a href="#games" class="btn btn-outline-light btn-lg">Game</a>
                     </div>
                 </div>
             </header>
@@ -121,25 +121,34 @@
             <h3>Blog</h3>
         </section>
 
-        <section id="about" data-route="about" hidden>
-           <h3>About</h3>
+        <section class="container" id="about" data-route="about" hidden>
+            
+            <h3 class="display-4  fw-bold my-4">About</h3>
+            <h4><span class="capital-red">H</span>i, I'm <span class="capital-red">V</span>incent a <span class="capital-red">W</span>eb <span class="capital-red">D</span>eveloper from <span class="capital-red">S</span>outh <span class="capital-red">A</span>frica.</h4>
+            <p class="lead mb-4 p-4">	
+                I <span class="capital-red">P</span>rogram allot of front-end code on the web and am fluent in
+				<span class="capital-red">J</span>avaScript, <span class="capital-red">H</span>TML and <span class="capital-red">C</span>SS. 
+                According to the creator of C++ Bjarne Stroustrup every Programmer 
+				should know at the very least 3 Programming languages. I enjoy coding in Python and PHP
+				aswell. I Like bare bones code that get the job done. I stick to textbook solutions.
+				aiming for fast clean efficient code but I do get my hands dirty with bloated | Spaghetti code.
+				If you need help with something <span class="capital-red">W</span>eb related or have a <span class="capital-red">J</span>ob offer drop me a message.
+            </p>
+    
         </section>
 
-        <section id="contact" data-route="contact" hidden>
+        <section class="container" id="contact" data-route="contact" hidden>
             <h3>Contact</h3> 
         </section>
 
-        <section id="games" data-route="games" hidden>
+        <section class="container" id="games" data-route="games" hidden>
             <h3>Games</h3>
         </section>
     </main>
     <script src="./assets/bootstrap-5.3.8-dist/js/bootstrap.bundle.js" ></script>
     <script>
         const toggle = document.getElementById('themeToggle');
-  
-        (toggle)
-        toggle.addEventListener('click', () => {
-          
+        toggle.addEventListener('click', () => {         
             const html = document.documentElement;
             const themIconImage = document.getElementById('themIconImage')
             if (html.getAttribute('data-bs-theme') !== 'dark') {
@@ -157,6 +166,8 @@
     <script>
         // Combined theme toggle + simple hash router (show/hide only)
         (function () {
+           
+
             // Theme toggle
             const toggle = document.getElementById('themeToggle');
             const icon = document.getElementById('themeIconImage');
