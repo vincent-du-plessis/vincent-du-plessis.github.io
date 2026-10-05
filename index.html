@@ -143,6 +143,45 @@
 
         <section class="container" id="games" data-route="games" hidden>
             <h3>Games</h3>
+            <canvas id="gameCanvas"></canvas>
+            <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+            <script>
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, innerWidth/innerHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({canvas: document.getElementById('gameCanvas')});
+            renderer.setSize(innerWidth, innerHeight);
+
+            // Bird
+            const birdGeo = new THREE.BoxGeometry(1,1,1);
+            const birdMat = new THREE.MeshBasicMaterial({color:0xff0000});
+            const bird = new THREE.Mesh(birdGeo, birdMat);
+            scene.add(bird);
+            bird.position.y = 0;
+
+            // Pipe
+            const pipeGeo = new THREE.BoxGeometry(1,10,1);
+            const pipeMat = new THREE.MeshBasicMaterial({color:0x00ff00});
+            const pipe = new THREE.Mesh(pipeGeo, pipeMat);
+            scene.add(pipe);
+            pipe.position.x = 5;
+
+            camera.position.z = 10;
+
+            let velocity = 0;
+            document.addEventListener('keydown', e=>{
+            if(e.code==='Space') velocity = 0.2;
+            });
+
+            function animate(){
+            requestAnimationFrame(animate);
+            velocity -= 0.01; // gravity
+            bird.position.y += velocity;
+            pipe.position.x -= 0.05; // move pipe
+            renderer.render(scene,camera);
+            }
+            animate();
+        </script>
+
         </section>
     </main>
     <script src="./assets/bootstrap-5.3.8-dist/js/bootstrap.bundle.js" ></script>
