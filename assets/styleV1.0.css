@@ -7,3 +7,8 @@
 .capital-red {
   color: rgba(255, 0, 0, 0.575);
 }
+
+#blog {
+  height: 78vh !important;
+  text-overflow: ellipsis;
+}
