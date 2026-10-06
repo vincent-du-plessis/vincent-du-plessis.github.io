@@ -1,7 +1,7 @@
 .hero-content-bg {
   background-color: #000 !important; /* pure black */
   color: #fff;
-  height: 78vh
+  height: 87vh;
 }
 
 .capital-red {
@@ -9,6 +9,5 @@
 }
 
 #blog {
-  height: 78vh !important;
-  text-overflow: ellipsis;
+  height: 80vh !important;
 }
