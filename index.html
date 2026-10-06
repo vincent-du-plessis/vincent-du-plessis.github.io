@@ -71,11 +71,14 @@
    <link rel="stylesheet" href="./assets/styleV1.0.css">
 </head>
 <body>
-    <h1 class="text-center bg-warning text-dark">Under Construction!</h1>
+    
     <nav class="navbar navbar-expand-xl bg-body-tertiary  fixed-top">
         <div class="container-fluid spaced-apart">
+            <div class="d-flex align-items-center justify-content-center gap-2">
+                <img src="./assets/Images/navpic.webp" alt="Vincent du Plessis Navigation Image" width="30" height="30">
+                <p class="text-center bg-warning text-danger rounded-pill p-2 text-large x-5 h5 mb-0">Under Construction!</p>
+            </div>
 
-            <img src="./assets/Images/navpic.webp" alt="Vincent du Plessis Navigation Image" width="30" height="30">
             <div>
                 <button id="themeToggle" class="btn btn-outline-secondary border-0">
                     <img id="themIconImage" src="./assets/icons/moon-fill.svg" alt="Dark mode" width="20" height="20">
@@ -86,7 +89,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
             </div>
-
+            
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item"><a class="nav-link text-end mx-3" href="#Welcome" data-route="welcome">Welcome</a></li>
@@ -99,7 +102,8 @@
             </div>
         </div>
     </nav>
-    <main id="app" class="p-3 "> 
+    <main id="app" class="py-5"> 
+      
         <section id="Welcome" class="p-0" data-route="welcome">
             <header">
                 <div class="hero-bg" aria-hidden="true"></div>
@@ -117,8 +121,8 @@
             <!-- server-rendered home content (your hero etc.) -->
         </section>
 
-        <section id="blog" data-route="blog"  class="p-5 overflow-auto h-100" hidden>
-            <h3 class="display-4  fw-bold my-4"><span class="capital-red">B</span>log</h3>
+        <section id="blog" data-route="blog"  class="container overflow-auto h-100" hidden>
+            <h3 class="display-4 fw-bold my-4"><span class="capital-red">B</span>log</h3>
             <h4><span class="capital-red">v</span>iralStart.LinkedIn = About</h4>
             <p>
                 In the start of the 2019 pandemic I was introduced to Web development.
