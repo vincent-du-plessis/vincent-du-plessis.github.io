@@ -72,8 +72,8 @@
 </head>
 <body>
     <h1 class="text-center bg-warning text-dark">Under Construction!</h1>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid float-left">
+    <nav class="navbar navbar-expand-xl bg-body-tertiary  fixed-top">
+        <div class="container-fluid spaced-apart">
 
             <img src="./assets/Images/navpic.webp" alt="Vincent du Plessis Navigation Image" width="30" height="30">
             <div>
@@ -89,11 +89,11 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item"><a class="nav-link" href="#Welcome" data-route="welcome">Welcome</a></li>
-                <li class="nav-item"><a class="nav-link" href="#blog" data-route="blog">Blog</a></li>
-                <li class="nav-item"><a class="nav-link" href="#about" data-route="about">About</a></li>
-                <li class="nav-item"><a class="nav-link" href="#contact" data-route="contact">Contact</a></li>
-                <li class="nav-item"><a class="nav-link" href="#games" data-route="games">Games</a></li>
+                <li class="nav-item"><a class="nav-link text-end mx-3" href="#Welcome" data-route="welcome">Welcome</a></li>
+                <li class="nav-item"><a class="nav-link text-end mx-3" href="#blog" data-route="blog">Blog</a></li>
+                <li class="nav-item"><a class="nav-link text-end mx-3" href="#about" data-route="about">About</a></li>
+                <li class="nav-item"><a class="nav-link text-end mx-3" href="#contact" data-route="contact">Contact</a></li>
+                <li class="nav-item"><a class="nav-link text-end mx-3" href="#games" data-route="games">Games</a></li>
             </ul>
 
             </div>
@@ -107,7 +107,7 @@
                 <div class="hero-content hero-content-bg text-center text-white py-5">
                     <h1 class="display-4 fw-bold my-4"><span class="capital-red">W</span>elcome to my Site!</h1>
                     <p class="lead mb-4">I program on the <span class="capital-red">w</span>eb. 
-                           Explore my <span class="capital-red">w</span>ork or play aGame.</p>
+                           Explore my <span class="capital-red">w</span>ork or play a Game.</p>
                     <div class="d-flex justify-content-center gap-2">
                     <a href="#about"  class="btn btn-primary btn-lg">About</a>
                     <a href="#games" class="btn btn-outline-light btn-lg">Game</a>
@@ -126,11 +126,11 @@
             <h3 class="display-4  fw-bold my-4"><span class="capital-red">A</span>bout</h3>
             <h4>Hi, I'm Vincent a Web Developer from South Africa.</h4>
             <p class="lead mb-4 p-4">	
-                I Program allot of front-end code on the web and am fluent in
+                I Program a lot of front-end code on the web and am fluent in
 				JavaScript, HTML and CSS. 
-                According to the creator of C++ Bjarne Stroustrup every Programmer 
+                According to the creator of C++ <i>Bjarne Stroustrup</i> every Programmer 
 				should know at the very least 3 Programming languages. I enjoy coding in Python and PHP
-				aswell. I Like bare bones code that get the job done. I stick to text book solutions
+				as well. I Like bare bones code that get the job done. I stick to text book solutions
 				aiming for fast clean efficient code but I do get my hands dirty with bloated | Spaghetti code.
 				If you need help with something Web related or have a Job offer let me know <a href="#contact">here</a>.
             </p>
@@ -144,47 +144,12 @@
         <section class="container" id="games" data-route="games" hidden>
             <h3>Games</h3>
             <canvas id="gameCanvas"></canvas>
-            <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
-            <script>
-            const scene = new THREE.Scene();
-            const camera = new THREE.PerspectiveCamera(75, innerWidth/innerHeight, 0.1, 1000);
-            const renderer = new THREE.WebGLRenderer({canvas: document.getElementById('gameCanvas')});
-            renderer.setSize(innerWidth, innerHeight);
+             <script src="./assets/bootstrap-5.3.8-dist/js/bootstrap.bundle.js" ></script>
 
-            // Bird
-            const birdGeo = new THREE.BoxGeometry(1,1,1);
-            const birdMat = new THREE.MeshBasicMaterial({color:0xff0000});
-            const bird = new THREE.Mesh(birdGeo, birdMat);
-            scene.add(bird);
-            bird.position.y = 0;
-
-            // Pipe
-            const pipeGeo = new THREE.BoxGeometry(1,10,1);
-            const pipeMat = new THREE.MeshBasicMaterial({color:0x00ff00});
-            const pipe = new THREE.Mesh(pipeGeo, pipeMat);
-            scene.add(pipe);
-            pipe.position.x = 5;
-
-            camera.position.z = 10;
-
-            let velocity = 0;
-            document.addEventListener('keydown', e=>{
-            if(e.code==='Space') velocity = 0.2;
-            });
-
-            function animate(){
-            requestAnimationFrame(animate);
-            velocity -= 0.01; // gravity
-            bird.position.y += velocity;
-            pipe.position.x -= 0.05; // move pipe
-            renderer.render(scene,camera);
-            }
-            animate();
-        </script>
 
         </section>
     </main>
-    <script src="./assets/bootstrap-5.3.8-dist/js/bootstrap.bundle.js" ></script>
+   
     <script>
         const toggle = document.getElementById('themeToggle');
         toggle.addEventListener('click', () => {         
@@ -203,92 +168,117 @@
     </script>
 
     <script>
-        // Combined theme toggle + simple hash router (show/hide only)
-        (function () {
-           
+      // Combined theme toggle + simple hash router (show/hide only)
+(function () {
+  // Theme toggle
+  const toggle = document.getElementById('themeToggle');
+  const icon = document.getElementById('themeIconImage');
+  const html = document.documentElement;
 
-            // Theme toggle
-            const toggle = document.getElementById('themeToggle');
-            const icon = document.getElementById('themeIconImage');
-            const html = document.documentElement;
+  const ICONS = {
+    light: '/assets/icons/brightness-hight-fill.svg', // shown when theme is light
+    dark:  '/assets/icons/moon-fill.svg'              // shown when theme is dark
+  };
 
-            const ICONS = {
-            light: '/assets/icons/brightness-hight-fill.svg', // shown when theme is light
-            dark:  '/assets/icons/moon-fill.svg'              // shown when theme is dark
-            };
+  function applyTheme(theme) {
+    html.setAttribute('data-bs-theme', theme);
+    if (toggle) toggle.setAttribute('aria-pressed', theme === 'dark');
+    if (icon) {
+      icon.src = theme === 'dark' ? ICONS.dark : ICONS.light;
+      icon.alt = theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme';
+    }
+    try { localStorage.setItem('theme', theme); } catch (e) {}
+  }
 
-            function applyTheme(theme) {
-            html.setAttribute('data-bs-theme', theme);
-            toggle.setAttribute('aria-pressed', theme === 'dark');
-            if (icon) {
-                icon.src = theme === 'dark' ? ICONS.dark : ICONS.light;
-                icon.alt = theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme';
-            }
-            try { localStorage.setItem('theme', theme); } catch (e) {}
-            }
+  // init theme from storage or existing attribute
+  const saved = (function () {
+    try { return localStorage.getItem('theme'); } catch (e) { return null; }
+  })();
+  applyTheme(saved || html.getAttribute('data-bs-theme') || 'dark');
 
-            // init theme from storage or existing attribute
-            const saved = (function () {
-            try { return localStorage.getItem('theme'); } catch (e) { return null; }
-            })();
-            applyTheme(saved || html.getAttribute('data-bs-theme') || 'dark');
+  if (toggle) {
+    toggle.addEventListener('click', () => {
+      const next = html.getAttribute('data-bs-theme') === 'dark' ? 'light' : 'dark';
+      applyTheme(next);
+    });
+  }
 
-            toggle.addEventListener('click', () => {
-            const next = html.getAttribute('data-bs-theme') === 'dark' ? 'light' : 'dark';
-            applyTheme(next);
-            });
+  // Simple hash router: show/hide sections only
+  const sections = Array.from(document.querySelectorAll('main [data-route]'));
+  const app = document.getElementById('app');
 
-            // Simple hash router: show/hide sections only
-            const sections = Array.from(document.querySelectorAll('main [data-route]'));
-            const app = document.getElementById('app');
+  function showRoute(route) {
+    let found = false;
+    sections.forEach(sec => {
+      const is = sec.getAttribute('data-route') === route;
+      sec.hidden = !is;
+      if (is) found = true;
+    });
 
-            function showRoute(route) {
-            let found = false;
-            sections.forEach(sec => {
-                const is = sec.getAttribute('data-route') === route;
-                sec.hidden = !is;
-                if (is) found = true;
-            });
+    if (!found) {
+      // fallback to welcome
+      location.hash = '#welcome';
+      return;
+    }
 
-            if (!found) {
-                // fallback to welcome
-                location.hash = '#welcome';
-                return;
-            }
+    // update active nav link
+    document.querySelectorAll('a[data-route]').forEach(a => {
+      a.classList.toggle('active', a.getAttribute('data-route') === route);
+    });
 
-            // update active nav link
-            document.querySelectorAll('a[data-route]').forEach(a => {
-                a.classList.toggle('active', a.getAttribute('data-route') === route);
-            });
+    // update title and move focus to main for accessibility
+    document.title = route.charAt(0).toUpperCase() + route.slice(1) + ' - Vincent du Plessis';
+    if (app) {
+      app.focus({ preventScroll: true });
+    }
+  }
 
-            // update title and move focus to main for accessibility
-            document.title = route.charAt(0).toUpperCase() + route.slice(1) + ' - Vincent du Plessis';
-            if (app) {
-                app.focus({ preventScroll: true });
-            }
-            }
+  function currentRoute() {
+    return (location.hash || '#welcome').replace('#', '').toLowerCase();
+  }
 
-            function currentRoute() {
-            return (location.hash || '#welcome').replace('#', '').toLowerCase();
-            }
+  // initialize
+  showRoute(currentRoute());
 
-            // initialize
-            showRoute(currentRoute());
+  // handle back/forward
+  window.addEventListener('hashchange', () => {
+    showRoute(currentRoute());
 
-            // handle back/forward
-            window.addEventListener('hashchange', () => showRoute(currentRoute()));
+    // also ensure collapse closes on hash change (covers non-intercepted clicks)
+    const collapseEl = document.getElementById('navCollapse') || document.querySelector('.navbar-collapse');
+    const collapseInstance = collapseEl ? bootstrap.Collapse.getOrCreateInstance(collapseEl) : null;
+    if (collapseEl && collapseEl.classList.contains('show') && collapseInstance) {
+      collapseInstance.hide();
+    }
+  });
 
-            // intercept internal hash links to ensure consistent behavior
-            document.addEventListener('click', (e) => {
-            const a = e.target.closest('a[href^="#"]');
-            if (!a) return;
-            // allow external targets or downloads
-            if (a.target && a.target !== '_self') return;
-            e.preventDefault();
-            const route = (a.getAttribute('href') || '#welcome').replace('#', '').toLowerCase();
-            location.hash = '#' + route;
-            });
-        })();
+  // close navbar collapse when a route link is clicked
+  (function () {
+    const collapseEl = document.getElementById('navCollapse') || document.querySelector('.navbar-collapse');
+    const collapseInstance = collapseEl ? bootstrap.Collapse.getOrCreateInstance(collapseEl) : null;
+
+    // Only intercept links that have data-route (navbar items)
+    document.addEventListener('click', (e) => {
+      const a = e.target.closest('a[data-route]');
+      if (!a) return; // ignore other links
+
+      // allow external targets or downloads
+      if (a.target && a.target !== '_self') return;
+
+      e.preventDefault();
+      const route = (a.getAttribute('data-route') || 'welcome').toLowerCase();
+      // set the hash — this triggers the hashchange handler / showRoute
+      location.hash = '#' + route;
+
+      // if the navbar is open on mobile, hide it
+      if (collapseEl && collapseEl.classList.contains('show') && collapseInstance) {
+        collapseInstance.hide();
+      }
+    });
+  })();
+
+})();
+
     </script>
 
 </body>
