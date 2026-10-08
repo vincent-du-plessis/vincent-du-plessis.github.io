@@ -85,9 +85,9 @@
                 </button>
 
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
             </div>
             
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -185,8 +185,8 @@
     </main>
    
     <script>
-        const toggle = document.getElementById('themeToggle');
-        toggle.addEventListener('click', () => {         
+        const toggle2 = document.getElementById('themeToggle');
+        toggle2.addEventListener('click', () => {         
             const html = document.documentElement;
             const themIconImage = document.getElementById('themIconImage')
             if (html.getAttribute('data-bs-theme') !== 'dark') {
@@ -202,129 +202,85 @@
     </script>
 
     <script>
-// Combined theme toggle + simple hash router (show/hide only)
-// Ensures navbar collapse is closed on load and after navigation
-        (function () {
-        // Theme toggle
-        const toggle = document.getElementById('themeToggle');
-        const icon = document.getElementById('themeIconImage');
-        const html = document.documentElement;
 
-        const ICONS = {
-            light: '/assets/icons/brightness-hight-fill.svg',
-            dark:  '/assets/icons/moon-fill.svg'
-        };
+(function () {
+  // Theme toggle
+  const themeBtn = document.getElementById('themeToggle');
+  const icon = document.getElementById('themeIconImage'); // HTML id must match
+  const html = document.documentElement;
+  const ICONS = {
+    light: './assets/icons/brightness-high-fill.svg', // was "hight"
+    dark:  './assets/icons/moon-fill.svg'
+  };
 
-        function applyTheme(theme) {
-            html.setAttribute('data-bs-theme', theme);
-            if (toggle) toggle.setAttribute('aria-pressed', theme === 'dark');
-            if (icon) {
-            icon.src = theme === 'dark' ? ICONS.dark : ICONS.light;
-            icon.alt = theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme';
-            }
-            try { localStorage.setItem('theme', theme); } catch (e) {}
-        }
+  function applyTheme(theme) {
+    html.setAttribute('data-bs-theme', theme);
+    if (themeBtn) themeBtn.setAttribute('aria-pressed', theme === 'dark');
+    if (icon) {
+      icon.src = theme === 'dark' ? ICONS.dark : ICONS.light;
+      icon.alt = theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme';
+    }
+    try { localStorage.setItem('theme', theme); } catch (e) {}
+  }
 
-        // init theme
-        const saved = (function () {
-            try { return localStorage.getItem('theme'); } catch (e) { return null; }
-        })();
-        applyTheme(saved || html.getAttribute('data-bs-theme') || 'dark');
+  const saved = (function () {
+    try { return localStorage.getItem('theme'); } catch (e) { return null; }
+  })();
+  applyTheme(saved || html.getAttribute('data-bs-theme') || 'dark');
 
-        if (toggle) {
-            toggle.addEventListener('click', () => {
-            const next = html.getAttribute('data-bs-theme') === 'dark' ? 'light' : 'dark';
-            applyTheme(next);
-            });
-        }
+  if (themeBtn) {
+    themeBtn.addEventListener('click', () => {
+      applyTheme(html.getAttribute('data-bs-theme') === 'dark' ? 'light' : 'dark');
+    });
+  }
 
-        // Simple hash router: show/hide sections only
-        const sections = Array.from(document.querySelectorAll('main [data-route]'));
-        const app = document.getElementById('app');
+  // Router
+  const sections = Array.from(document.querySelectorAll('main [data-route]'));
 
-        function showRoute(route) {
-            let found = false;
-            sections.forEach(sec => {
-            const is = sec.getAttribute('data-route') === route;
-            sec.hidden = !is;
-            if (is) found = true;
-            });
+  function showRoute(route) {
+    let found = false;
+    sections.forEach(sec => {
+      const is = sec.getAttribute('data-route') === route;
+      sec.hidden = !is;
+      if (is) found = true;
+    });
+    if (!found) {
+      location.hash = '#welcome';
+      return;
+    }
+    document.querySelectorAll('a[data-route]').forEach(a => {
+      a.classList.toggle('active', a.getAttribute('data-route') === route);
+    });
+    document.title = route.charAt(0).toUpperCase() + route.slice(1) + ' - Vincent du Plessis';
+  }
 
-            if (!found) {
-            location.hash = '#welcome';
-            return;
-            }
+  function currentRoute() {
+    return (location.hash || '#welcome').replace('#', '').toLowerCase();
+  }
 
-            document.querySelectorAll('a[data-route]').forEach(a => {
-            a.classList.toggle('active', a.getAttribute('data-route') === route);
-            });
+  // Navbar collapse
+  const collapseEl = document.querySelector('.navbar-collapse');
+  const collapseInstance = collapseEl
+    ? bootstrap.Collapse.getOrCreateInstance(collapseEl, { toggle: false })
+    : null;
 
-            document.title = route.charAt(0).toUpperCase() + route.slice(1) + ' - Vincent du Plessis';
-            if (app) app.focus({ preventScroll: true });
+  function closeNav() {
+    if (collapseInstance) collapseInstance.hide();
+  }
 
-            // ensure collapse is closed after route change
-            closeNavbarCollapse();
-        }
+  showRoute(currentRoute());
 
-        function currentRoute() {
-            return (location.hash || '#welcome').replace('#', '').toLowerCase();
-        }
+  window.addEventListener('hashchange', () => {
+    showRoute(currentRoute());
+    closeNav();
+  });
 
-        // Collapse helpers
-        const collapseEl = document.getElementById('navCollapse') || document.querySelector('.navbar-collapse');
-        const toggler = document.querySelector('.navbar-toggler');
-        const collapseInstance = collapseEl ? bootstrap.Collapse.getOrCreateInstance(collapseEl) : null;
-
-        function closeNavbarCollapse() {
-            if (!collapseEl || !collapseInstance) return;
-            // If it's open, hide it; also remove stray 'show' class if present
-            if (collapseEl.classList.contains('show')) {
-            collapseInstance.hide();
-            } else {
-            // defensive: remove show class and set aria-expanded on toggler
-            collapseEl.classList.remove('show');
-            }
-            if (toggler) toggler.setAttribute('aria-expanded', 'false');
-        }
-
-        // initialize router and UI
-        showRoute(currentRoute());
-
-        // ensure collapse is closed on initial load (fixes "open by default")
-        // run after a short timeout so Bootstrap has initialized
-        window.addEventListener('load', () => {
-            setTimeout(closeNavbarCollapse, 50);
-        });
-
-        // handle back/forward
-        window.addEventListener('hashchange', () => {
-            showRoute(currentRoute());
-        });
-
-        // close navbar collapse when a route link is clicked
-        document.addEventListener('click', (e) => {
-            const a = e.target.closest('a[data-route]');
-            if (!a) return;
-            if (a.target && a.target !== '_self') return;
-
-            e.preventDefault();
-            const route = (a.getAttribute('data-route') || 'welcome').toLowerCase();
-            location.hash = '#' + route;
-
-            // hide the mobile menu if open
-            closeNavbarCollapse();
-        });
-
-        // defensive: if some other code toggles the collapse, keep aria in sync
-        if (collapseEl) {
-            collapseEl.addEventListener('shown.bs.collapse', () => {
-            if (toggler) toggler.setAttribute('aria-expanded', 'true');
-            });
-            collapseEl.addEventListener('hidden.bs.collapse', () => {
-            if (toggler) toggler.setAttribute('aria-expanded', 'false');
-            });
-        }
-        })();
+  // Also needed when clicking the link for the page you're already on
+  // (that doesn't fire hashchange)
+  document.querySelectorAll('.navbar-collapse .nav-link').forEach(link => {
+    link.addEventListener('click', closeNav);
+  });
+})();
 
     </script>
 
