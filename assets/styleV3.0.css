@@ -11,3 +11,7 @@
 #blog {
   height: 80vh !important;
 }
+
+.active {
+  color: rgba(255, 0, 0, 0.575) !important;
+}
