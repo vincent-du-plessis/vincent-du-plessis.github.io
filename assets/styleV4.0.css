@@ -18,3 +18,19 @@
 .ooo{
   background: #ffffff00;
 }
+
+.hero-text {
+        /* mobile: nearly full width, small gap each side */  /* never wider than this */ 
+  padding-top: 19%;  
+  padding:19% 5%;
+/* mobile: small gap from the left edge */
+}
+
+@media (min-width: 900px) {
+  .hero-text {
+    width: 60%;  
+    text-align: center;
+    margin-left: 2%;  /* big screens: sits 10% in from the left */
+    padding-top: 5%; 
+  }
+}
