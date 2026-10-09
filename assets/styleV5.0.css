@@ -28,7 +28,7 @@
 
 @media (min-width: 900px) {
   .hero-text {
-    width: 60%;  
+    width: 70%;  
     text-align: center;
     margin-left: 2%;  /* big screens: sits 10% in from the left */
     padding-top: 5%; 
