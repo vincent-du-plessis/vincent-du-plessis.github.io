@@ -7,7 +7,10 @@
                style-src 'self' https://cdn.jsdelivr.net; 
                script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; 
                img-src 'self' data: https://cdn.jsdelivr.net; 
-               font-src 'self' https://cdn.jsdelivr.net;">
+               font-src 'self' https://cdn.jsdelivr.net;
+ 
+               
+               ">
 
 
     <meta charset="UTF-8">
@@ -67,8 +70,8 @@
     </script>
                
     <!-- <meta name="theme-color" content="#0d6efd"> -->
-   <link href="./assets/bootstrap-5.3.8-dist/css/bootstrap.css" rel="stylesheet" >
-   <link rel="stylesheet" href="./assets/styleV5.0.css">
+   <link href="./assets/bootstrap-5.3.8-dist/css/bootstrap.css" rel="stylesheet" defer>
+   <link rel="stylesheet" href="./assets/styleV6.0.css" defer>
 </head>
 <body>
     
@@ -76,12 +79,12 @@
         <div class="container-fluid spaced-apart">
             <div class="d-flex align-items-center justify-content-center gap-2">
                 <img src="./assets/Images/navpic.webp" alt="Vincent du Plessis Navigation Image" width="30" height="30">
-                <p class="text-center  text-danger rounded-pill p-1 h5 mb-0">Under Construction!</p>
+                <p class="text-center rounded-pill bg-danger p-1 h5 mb-0">Under Construction!</p>
             </div>
 
             <div>
                 <button id="themeToggle" class="btn btn-outline-secondary border-0">
-                    <img id="themIconImage" src="./assets/icons/moon-fill.svg" alt="Dark mode" width="20" height="20">
+                    <img id="themIconImage" src="./assets/icons/moon-fill.svg" alt="Dark mode" loading="lazy" width="20" height="20">
                 </button>
 
 
@@ -97,7 +100,7 @@
                 <li class="nav-item"><a class="nav-link text-end mx-3" href="#about" data-route="about">About</a></li>
                 <li class="nav-item"><a class="nav-link text-end mx-3" href="#contact" data-route="contact">Contact</a></li>
                 <li class="nav-item"><a class="nav-link text-end mx-3" href="#games" data-route="games">Games</a></li>
-            </ul>
+            </ul> 
 
             </div>
         </div>
@@ -124,25 +127,25 @@
 
         <section id="blog" data-route="blog"  class="container overflow-auto h-100" hidden>
             <h3 class="display-4 fw-bold my-4"><span class="capital-red">B</span>log</h3>
-            <h4><span class="capital-red">v</span>iralStart.LinkedIn = About</h4>
+            <h4>My Origin Story</h4>
             <p>
                 In the start of the 2019 pandemic I was introduced to Web development.
                  I learned the fundamentals HTML/CSS and JavaScript. I learned to 
                  touch type in the early days of my journey currently typing 56 
-                 words per minute on average witch makes Software Development easier 
+                 words per minute on average which makes Software Development easier 
                  to learn and discourages burnout. 
                  <hr>
                  I came across quite a few 
                  technologies in the build up to where I am now. Open source and 
                  the freedom to learn on the Web makes the barrier of entry small 
                  for anyone to obtain awesome skills. I started small I found a PC 
-                 in my parents garage and turned it on. I got greeted with a BIOs 
+                 in my parents garage and turned it on. I got greeted with a BIOS 
                  post message "Missing boot device" and I found a HDD drive that 
                  connects with a PATA cable and plugged it in. 
                  Somehow got windows XP running even though the jumper selection on the 
                  drive gave me trouble. 
                  <hr>
-                 But like most achievements in live it's not possible with the help from others. 
+                 But like most achievements in life it's not possible with the help from others. 
                  A friend got windows 10 up and running on my machine and online. 
                  But most importantly morphed my YouTube algorithm for the better by sending me of upward to 50 links to tutorials on Web Development. 
                  <hr>
@@ -152,7 +155,7 @@
                  I could with confidence call my self a Web Developer the day I made a single page for a online newspaper company, mirroring their whole sites 
                  CSS/HTML by hand and improving a little of it without causing suspicion . As for my future it might come at a fork. I have a few Software Engineers I look up to pulling me in different Directions. What should my second Programming language be C++ or C#?. 
                  I'm no rush to make this decision. var's are var's, loops are loops and OOP is OOP. 
-                 I know I would be happy with either one and I will probably circle back to the other. Enough about me. : ) If you are looking for a Web developer Contact me I would be glad to make your acquaintance. Thanx for reading. Have a Steller day!
+                 I know I would be happy with either one and I will probably circle back to the other. Enough about me. : ) If you are looking for a Web developer Contact me I would be glad to make your acquaintance. Thanks for reading. Have a Stellar day!
             </p>
         </section>
 
@@ -174,17 +177,63 @@
 
         <section class="container" id="contact" data-route="contact" hidden>
             <h3>Contact</h3> 
+            <div class="row justify-content-center">
+              <div class="col-md-8 col-lg-6">
+                <div class="card shadow-sm">
+                  <div class="card-body p-4">
+                    <h1 class="h3 mb-1">Contact Us</h1>
+                    <p class="text-muted mb-4">Send me a message and I'll get back to you soon.</p>
+        
+                    <div id="success" class="alert alert-success d-none" role="alert">
+                      Thanks! Your message has been sent.
+                    </div>
+                    <div id="error" class="alert alert-danger d-none" role="alert">
+                      Something went wrong. Please try again.
+                    </div>
+        
+                    <form action="https://api.web3forms.com/submit" method="POST" id="contactForm" class="needs-validation" novalidate>
+                      <input type="hidden" name="access_key" value="0ef07ffc-63e5-45fe-b758-3e1e2ea8c957">
+                      <!-- Honeypot spam trap: leave hidden and empty -->
+                      <input id="botcheck" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off">
+        
+                      <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                        <div class="invalid-feedback">Please enter your name.</div>
+                      </div>
+        
+                      <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                        <div class="invalid-feedback">Please enter a valid email address.</div>
+                      </div>
+        
+                      <div class="mb-3">
+                        <label for="subject" class="form-label">Subject</label>
+                        <input type="text" class="form-control" id="subject" name="subject">
+                      </div>
+        
+                      <div class="mb-3">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                        <div class="invalid-feedback">Please enter a message.</div>
+                      </div>
+        
+                      <button type="submit" id="submitBtn" class="btn btn-primary w-100">Send Message</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
         </section>
 
         <section class="container" id="games" data-route="games" hidden>
             <h3>Games</h3>
-            <canvas id="gameCanvas"></canvas>
-             <script src="./assets/bootstrap-5.3.8-dist/js/bootstrap.bundle.js" ></script>
-
-
+            <p>Coming Soon!</p>
         </section>
     </main>
-   
+   <script src="./assets/bootstrap-5.3.8-dist/js/bootstrap.bundle.js" ></script>
+
     <script>
         const toggle2 = document.getElementById('themeToggle');
         toggle2.addEventListener('click', () => {         
@@ -286,29 +335,56 @@
 </script>
 
 
-<script src="https://cdn.jsdelivr.net/npm/three@0.134.0/build/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.birds.min.js"></script>
-
+<!-- <script src="https://cdn.jsdelivr.net/npm/three@0.134.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.birds.min.js"></script> -->
 <script>
-VANTA.BIRDS({
-  el: "#Welcome",
- mouseControls: true,
-  touchControls: true,
-  gyroControls: false,
-  minHeight: 200.00,
-  minWidth: 200.00,
-  scale: 1.00,
-  scaleMobile: 1.00,
-  backgroundColor: 0x0,
-  color1: 0xf00ff,
-  color2: 0xb2ff,
-  birdSize: 0.50,
-  wingSpan: 13.00,
-  speedLimit: 1.00,
-  separation: 17.00,
-  alignment: 7.00,
-  cohesion: 31.00
-})
+  // /assets/hero.js
+function loadScript(src) {
+  return new Promise((resolve, reject) => {
+    const s = document.createElement("script");
+    s.src = src;
+    s.onload = resolve;
+    s.onerror = reject;
+    document.head.appendChild(s);
+  });
+}
+
+async function initVanta() {
+  try {
+    await loadScript("https://cdn.jsdelivr.net/npm/three@0.121.1/build/three.min.js");
+    await loadScript("https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.birds.min.js");
+
+    VANTA.BIRDS({
+      el: "#Welcome",
+    mouseControls: true,
+      touchControls: true,
+      gyroControls: false,
+      minHeight: 200.00,
+      minWidth: 200.00,
+      scale: 1.00,
+      scaleMobile: 1.00,
+      backgroundColor: 0x0,
+      color1: 0xf00ff,
+      color2: 0xb2ff,
+      birdSize: 0.50,
+      wingSpan: 13.00,
+      speedLimit: 1.00,
+      separation: 50.00,
+    })
+  } catch (e) {
+    console.warn("Vanta failed to load", e);
+  }
+}
+
+// Wait until the page is idle so it doesn't compete with content
+if ("requestIdleCallback" in window) {
+  requestIdleCallback(initVanta, { timeout:200 });
+} else {
+  window.addEventListener("load", () => setTimeout(initVanta, 0));
+}
+</script>
+<script>
+
 </script>
 </body>
 </html>
