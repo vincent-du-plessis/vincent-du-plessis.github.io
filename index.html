@@ -6,10 +6,9 @@
       content="default-src 'self'; 
                style-src 'self' https://cdn.jsdelivr.net; 
                script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; 
+               script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;
                img-src 'self' data: https://cdn.jsdelivr.net; 
-               font-src 'self' https://cdn.jsdelivr.net;
- 
-               
+               font-src 'self' https://cdn.jsdelivr.net;             
                ">
 
 
@@ -26,18 +25,19 @@
     <meta property="og:description" content="Check out my personal website for more information about me my blog and my work.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://vincentduplessis.co.za/">
-    <meta property="og:image" content="https://vincentduplessis.co.za/preview.jpg">
+    <!-- Does this Image exist? -->
+    <meta property="og:image" content="/assets/icons/vincentduplessis64.ico">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Vincent du Plessis's Web Site">
     <meta name="twitter:description" content="Check out my personal website for more information about me my blog and my work.">
-    <meta name="twitter:image" content="https://vincentduplessis.co.za/preview.jpg">
+    <meta name="twitter:image" content="/assets/icons/vincentduplessis64.ico">
 
     <!-- Standard favicon -->
     <!-- <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png"> -->
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/vincentduplessis32.ico">
-    <link rel="icon" type="image/png" sizes="48x48" href="/assets/icons/vincentduplessis48.ico">
+    <link rel="icon" type="image/png" sizes="64x64" href="/assets/icons/vincentduplessis64.ico">
 
     <!-- Apple Touch Icon (iOS home screen) -->
     <!-- <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png"> -->
@@ -229,172 +229,21 @@
 
         <section class="container" id="games" data-route="games" hidden>
             <h3>Games</h3>
-            <p>Coming Soon!</p>
-        </section>
+             <button id="drop-btn" class="btn btn-outline-primary" type="button">Start</button>
+
+            </section>  
     </main>
 
-    <button id="drop-btn" class="btn btn-sm btn-outline-secondary" type="button">Drop everything</button>
+   
 
  
-  
 
-
-
-   <script src="./assets/bootstrap-5.3.8-dist/js/bootstrap.bundle.js" ></script>
-
-    <script>
-        const toggle2 = document.getElementById('themeToggle');
-        toggle2.addEventListener('click', () => {         
-            const html = document.documentElement;
-            const themIconImage = document.getElementById('themIconImage')
-            if (html.getAttribute('data-bs-theme') !== 'dark') {
- 
-            html.setAttribute('data-bs-theme', 'light');
-            themIconImage.src = './assets/icons/moon-fill.svg'
-            } else {
-          
-            html.setAttribute('data-bs-theme', 'dark');
-            themIconImage.src = './assets/icons/brightness-high-fill.svg'
-            }
-        });
-    </script>
-
-    <script>
-
-(function () {
-  // Theme toggle
-  const themeBtn = document.getElementById('themeToggle');
-  const icon = document.getElementById('themeIconImage'); // HTML id must match
-  const html = document.documentElement;
-  const ICONS = {
-    light: './assets/icons/brightness-high-fill.svg', // was "hight"
-    dark:  './assets/icons/moon-fill.svg'
-  };
-
-  function applyTheme(theme) {
-    html.setAttribute('data-bs-theme', theme);
-    if (themeBtn) themeBtn.setAttribute('aria-pressed', theme === 'dark');
-    if (icon) {
-      icon.src = theme === 'dark' ? ICONS.dark : ICONS.light;
-      icon.alt = theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme';
-    }
-    try { localStorage.setItem('theme', theme); } catch (e) {}
-  }
-
-  const saved = (function () {
-    try { return localStorage.getItem('theme'); } catch (e) { return null; }
-  })();
-  applyTheme(saved || html.getAttribute('data-bs-theme') || 'dark');
-
-  if (themeBtn) {
-    themeBtn.addEventListener('click', () => {
-      applyTheme(html.getAttribute('data-bs-theme') === 'dark' ? 'light' : 'dark');
-    });
-  }
-
-  // Router
-  const sections = Array.from(document.querySelectorAll('main [data-route]'));
-
-  function showRoute(route) {
-    let found = false;
-    sections.forEach(sec => {
-      const is = sec.getAttribute('data-route') === route;
-      sec.hidden = !is;
-      if (is) found = true;
-    });
-    if (!found) {
-      location.hash = '#welcome';
-      return;
-    }
-    document.querySelectorAll('a[data-route]').forEach(a => {
-      a.classList.toggle('active', a.getAttribute('data-route') === route);
-    });
-    document.title = route.charAt(0).toUpperCase() + route.slice(1) + ' - Vincent du Plessis';
-  }
-
-  function currentRoute() {
-    return (location.hash || '#welcome').replace('#', '').toLowerCase();
-  }
-
-  // Navbar collapse
-  const collapseEl = document.querySelector('.navbar-collapse');
-  const collapseInstance = collapseEl
-    ? bootstrap.Collapse.getOrCreateInstance(collapseEl, { toggle: false })
-    : null;
-
-  function closeNav() {
-    if (collapseInstance) collapseInstance.hide();
-  }
-
-  showRoute(currentRoute());
-
-  window.addEventListener('hashchange', () => {
-    showRoute(currentRoute());
-    closeNav();
-  });
-
-  // Also needed when clicking the link for the page you're already on
-  // (that doesn't fire hashchange)
-  document.querySelectorAll('.navbar-collapse .nav-link').forEach(link => {
-    link.addEventListener('click', closeNav);
-  });
-})();
-
-</script>
-
-
-<!-- <script src="https://cdn.jsdelivr.net/npm/three@0.134.0/build/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.birds.min.js"></script> -->
-<script>
-  // /assets/hero.js
-function loadScript(src) {
-  return new Promise((resolve, reject) => {
-    const s = document.createElement("script");
-    s.src = src;
-    s.onload = resolve;
-    s.onerror = reject;
-    document.head.appendChild(s);
-  });
-}
-
-async function initVanta() {
-  try {
-    await loadScript("https://cdn.jsdelivr.net/npm/three@0.121.1/build/three.min.js");
-    await loadScript("https://cdn.jsdelivr.net/npm/vanta@0.5.24/dist/vanta.birds.min.js");
-
-    VANTA.BIRDS({
-      el: "#Welcome",
-    mouseControls: true,
-      touchControls: true,
-      gyroControls: false,
-      minHeight: 200.00,
-      minWidth: 200.00,
-      scale: 1.00,
-      scaleMobile: 1.00,
-      backgroundColor: 0x0,
-      color1: 0xf00ff,
-      color2: 0xb2ff,
-      birdSize: 0.50,
-      wingSpan: 13.00,
-      speedLimit: 1.00,
-      separation: 50.00,
-    })
-  } catch (e) {
-    console.warn("Vanta failed to load", e);
-  }
-}
-
-// Wait until the page is idle so it doesn't compete with content
-if ("requestIdleCallback" in window) {
-  requestIdleCallback(initVanta, { timeout:200 });
-} else {
-  window.addEventListener("load", () => setTimeout(initVanta, 0));
-}
-</script>
-<script>
-
-</script>
- <script src="https://cdn.jsdelivr.net/npm/matter-js@0.20.0/build/matter.min.js"></script>
-   <script src="/assets/physics.js"></script>
+<script src="./assets/bootstrap-5.3.8-dist/js/bootstrap.bundle.js" ></script>
+<script src="/assets/themeToggle.js" defer></script>
+<script src="/assets/toggleSectionsAndThemes.js" defer></script>
+<script src="/assets/vanta.js" defer></script>
+<script></script>
+ <script src="https://cdn.jsdelivr.net/npm/matter-js@0.20.0/build/matter.min.js" defer></script>
+<script src="/assets/physics.js" defer></script>
 </body>
 </html>
