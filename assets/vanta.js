@@ -1,4 +1,5 @@
-  // /assets/hero.js
+let vantaEffect = null; // ADDED
+
 function loadScript(src) {
   return new Promise((resolve, reject) => {
     const s = document.createElement("script");
@@ -10,13 +11,16 @@ function loadScript(src) {
 }
 
 async function initVanta() {
+  if (vantaEffect) return; // ADDED
   try {
-    await loadScript("./assets/three.js");
-    await loadScript("./assets/vantaBirds.js");
-    
-    VANTA.BIRDS({
+    if (typeof VANTA === "undefined") { // ADDED: only load the scripts once
+      await loadScript("./assets/three.js");
+      await loadScript("./assets/vantaBirds.js");
+    }
+
+    vantaEffect = VANTA.BIRDS({ // CHANGED: saved in a variable
       el: "#Welcome",
-    mouseControls: true,
+      mouseControls: true,
       touchControls: true,
       gyroControls: false,
       minHeight: 200.00,
@@ -30,15 +34,29 @@ async function initVanta() {
       wingSpan: 13.00,
       speedLimit: 1.00,
       separation: 50.00,
-    })
+    });
   } catch (e) {
     console.warn("Vanta failed to load", e);
   }
 }
 
+// ADDED: so the router can start and stop the effect
+window.startVanta = initVanta;
+window.stopVanta = function () {
+  if (vantaEffect) {
+    vantaEffect.destroy();
+    vantaEffect = null;
+  }
+};
+
 // Wait until the page is idle so it doesn't compete with content
+function firstStart() {
+  const hash = location.hash.replace("#", "").toLowerCase(); // ADDED
+  if (!hash || hash === "welcome") initVanta();              // ADDED
+}
+
 if ("requestIdleCallback" in window) {
-  requestIdleCallback(initVanta, { timeout:100 });
-  } else {
-    window.addEventListener("load", () => setTimeout(initVanta, 0));
+  requestIdleCallback(firstStart, { timeout: 100 });
+} else {
+  window.addEventListener("load", () => setTimeout(firstStart, 0));
 }

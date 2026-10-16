@@ -40,14 +40,5 @@
 }
 
 .cv-frame {
-  display: block;
-  width: 100%;
-  max-width: 900px;
-  margin: 0 auto;
-  border: 0;
-  /* fallback for older browsers */
-  height: calc(100vh - 11rem);
-  /* better on mobile, where the address bar changes the viewport height */
-  height: calc(100dvh - 11rem);
-  min-height: 400px;
+width: 100%; border: none; height: 80vh 
 }

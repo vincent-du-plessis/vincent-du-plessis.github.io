@@ -2,15 +2,16 @@
 <html lang="en" data-bs-theme="dark">
 <head>
     <meta name="robots" content="index, follow">
-    <meta http-equiv="Content-Security-Policy" 
+    <!-- <meta http-equiv="Content-Security-Policy" 
       content="default-src 'self'; 
                style-src 'self' https://cdn.jsdelivr.net; 
                script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; 
                script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;
                frame-src https://drive.google.com;
+               script-src 'self' https://play.google.com;
                img-src 'self' data: https://cdn.jsdelivr.net; 
                font-src 'self' https://cdn.jsdelivr.net;             
-               ">
+               "> -->
 
 
     <meta charset="UTF-8">
@@ -235,11 +236,15 @@
 
         </section>  
         <section class="container" id="curriculum-vitae" data-route="curriculum-vitae" hidden>
-            <h3>Curriculum Vitae</h3>
-            <div >
-                <iframe src="https://drive.google.com/file/d/13U2ID4WsJLdh44G3ekxVfc2SRBmwBYmd/preview" width="640" height="480"></iframe>
-            </div>
-            
+
+                <h3>Curriculum Vitae</h3>
+                <iframe class="cv-frame"
+                        src="./assets/Vincent%20du%20Plessis%E2%80%99s%20Curriculum%20Vitae%20%281%29.pdf#view=FitH"
+                        title="Curriculum Vitae"></iframe>
+                <p class="mt-2">
+                    <a href="./assets/Vincent%20du%20Plessis%E2%80%99s%20Curriculum%20Vitae%20%281%29.pdf" download>Download my CV (PDF)</a>
+                </p>
+   
 
         </section>
 

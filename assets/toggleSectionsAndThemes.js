@@ -1,11 +1,10 @@
-
 (function () {
   // Theme toggle
   const themeBtn = document.getElementById('themeToggle');
   const icon = document.getElementById('themeIconImage'); // HTML id must match
   const html = document.documentElement;
   const ICONS = {
-    light: './assets/icons/brightness-high-fill.svg', // was "hight"
+    light: './assets/icons/brightness-high-fill.svg',
     dark:  './assets/icons/moon-fill.svg'
   };
 
@@ -48,6 +47,13 @@
       a.classList.toggle('active', a.getAttribute('data-route') === route);
     });
     document.title = route.charAt(0).toUpperCase() + route.slice(1) + ' - Vincent du Plessis';
+
+    // ADDED: start the birds on Welcome, destroy them elsewhere
+    if (route === 'welcome') {
+      requestAnimationFrame(() => window.startVanta && window.startVanta());
+    } else if (window.stopVanta) {
+      window.stopVanta();
+    }
   }
 
   function currentRoute() {
@@ -76,6 +82,4 @@
   document.querySelectorAll('.navbar-collapse .nav-link').forEach(link => {
     link.addEventListener('click', closeNav);
   });
-  console.log("hash:", location.hash);
-console.log("available routes:", [...document.querySelectorAll("[data-route]")].map(el => el.dataset.route));
 })();
