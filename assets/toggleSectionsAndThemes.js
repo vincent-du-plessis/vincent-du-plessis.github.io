@@ -76,4 +76,6 @@
   document.querySelectorAll('.navbar-collapse .nav-link').forEach(link => {
     link.addEventListener('click', closeNav);
   });
+  console.log("hash:", location.hash);
+console.log("available routes:", [...document.querySelectorAll("[data-route]")].map(el => el.dataset.route));
 })();
