@@ -1,79 +1,61 @@
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="dark">
 <head>
-    <meta name="robots" content="index, follow">
-    <!-- <meta http-equiv="Content-Security-Policy" 
-      content="default-src 'self'; 
-               style-src 'self' https://cdn.jsdelivr.net; 
-               script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; 
-               script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;
-               frame-src https://drive.google.com;
-               script-src 'self' https://play.google.com;
-               img-src 'self' data: https://cdn.jsdelivr.net; 
-               font-src 'self' https://cdn.jsdelivr.net;             
-               "> -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Vincent du Plessis | Web Developer, South Africa</title>
+<meta name="description" content="Personal website of Vincent du Plessis, a self-taught web developer from South Africa. Read my story, see my work and get in touch.">
+<link rel="canonical" href="https://vincentduplessis.co.za/">
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Language" content="en">
+<!-- Open Graph (Facebook, WhatsApp, LinkedIn) -->
+<meta property="og:site_name" content="Vincent du Plessis">
+<meta property="og:title" content="Vincent du Plessis | Web Developer, South Africa">
+<meta property="og:description" content="Personal website of Vincent du Plessis: my story, my work and how to get in touch.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vincentduplessis.co.za/">
+<meta property="og:image" content="./assets/icons/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Red V logo on a black background">
 
-    <title>Vincent du Plessis's Web Site</title>
-    <meta name="description" content="This is the personal website of Vincent du Plessis, where you can find information about him, his blog, and his work.">
-    <link rel="canonical" href="https://vincentduplessis.co.za/">    
-    
-    <!-- Open Graph (Facebook, WhatsApp, LinkedIn) -->
-    <meta property="og:title" content="Vincent du Plessis's Web Site">
-    <meta property="og:description" content="Check out my personal website for more information about me my blog and my work.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://vincentduplessis.co.za/">
-    <!-- Does this Image exist? -->
-    <meta property="og:image" content="/assets/icons/vincentduplessis64.ico">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Vincent du Plessis | Web Developer, South Africa">
+<meta name="twitter:description" content="Personal website of Vincent du Plessis: my story, my work and how to get in touch.">
+<meta name="twitter:image" content="./assets/icons/og-image.png">
 
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Vincent du Plessis's Web Site">
-    <meta name="twitter:description" content="Check out my personal website for more information about me my blog and my work.">
-    <meta name="twitter:image" content="/assets/icons/vincentduplessis64.ico">
+<!-- Icons -->
+<link rel="icon" type="image/png" sizes="96x96" href="./assets/icons/favicon-96.png">
+<link rel="icon" href="./assets/icons/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" sizes="180x180" href="./assets/icons/apple-touch-icon.png">
 
-    <!-- Standard favicon -->
-    <!-- <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png"> -->
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/vincentduplessis32.ico">
-    <link rel="icon" type="image/png" sizes="64x64" href="/assets/icons/vincentduplessis64.ico">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "url": "https://vincentduplessis.co.za/",
+      "name": "Vincent du Plessis"
+    },
+    {
+      "@type": "Person",
+      "name": "Vincent du Plessis",
+      "url": "https://vincentduplessis.co.za/",
+      "jobTitle": "Web Developer",
+      "image": "https://vincentduplessis.co.za/assets/icons/favicon-96.png",
+      "sameAs": [
+        "https://github.com/vincent-du-plessis",
+        "https://www.linkedin.com/in/vincent-du-plessis"
+      ]
+    }
+  ]
+}
+</script>
 
-    <!-- Apple Touch Icon (iOS home screen) -->
-    <!-- <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png"> -->
-
-    <!-- Android/Chrome -->
-    <!-- <link rel="icon" type="image/png" sizes="192x192" href="/icons/android-chrome-192x192.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="/icons/android-chrome-512x512.png"> -->
-
-    <!-- Fallback for older browsers -->
-    <link rel="shortcut icon" href="/assets/icons/vincentduplessis32.ico">
-
-    <link rel="canonical" href="https://vincentduplessis.co.za/">
-
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "WebSite",
-            "url": "https://vincentduplessis.co.za/",
-            "name": "vincentduplessis.co.za",
-            "description": "This is the personal website of Vincent du Plessis, where you can find information about him, his blog, and his work.",
-            "publisher": {
-            "@type": "Person",
-            "name": "Vincent du Plessis",
-            "logo": {
-                "@type": "ImageObject",
-                "url": "https://vincentduplessis.co.za/assets/icons/vincentduplessis32.ico"
-            }
-            }
-        }
-    </script>
-               
-    <!-- <meta name="theme-color" content="#0d6efd"> -->
-   <link href="./assets/bootstrap-5.3.8-dist/css/bootstrap.css" rel="stylesheet" defer>
-   <link rel="stylesheet" href="./assets/styleV6.0.css" defer>
+<link href="./assets/bootstrap-5.3.8-dist/css/bootstrap.css" rel="stylesheet">
+<link rel="stylesheet" href="./assets/styleV6.0.css">
 </head>
 <body>
     
@@ -115,7 +97,7 @@
                 <div class="hero-bg" aria-hidden="true"></div>
 
                 <div class="hero-content hero-content-bg text-white hero-text">
-                    <h1 class="display-4 fw-bold my-4"><span class="capital-red">W</span>elcome to my Site!</h1>
+                    <h2 class="display-4 fw-bold my-4"><span class="capital-red">W</span>elcome to my Site!</h2>
                     <p class="lead mb-4 fw-bold">I program on the <span class="capital-red">w</span>eb. 
                            Explore my <span class="capital-red">w</span>ork or play a Game.</p>
                     <div class="d-flex justify-content-center gap-2">
