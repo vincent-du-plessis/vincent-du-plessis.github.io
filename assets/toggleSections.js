@@ -2,6 +2,22 @@
   const sections = Array.from(document.querySelectorAll('main [data-route]'));
   const norm = s => (s || '').toLowerCase();
 
+  // ADDED: report a section view to GoatCounter
+  function trackPage(route) {
+    const send = () => window.goatcounter.count({
+      path: '/' + route,
+      title: document.title
+    });
+    if (window.goatcounter && window.goatcounter.count) {
+      send();
+    } else {
+      // the analytics script loads async, so wait for it on the first view
+      window.addEventListener('load', () => {
+        if (window.goatcounter && window.goatcounter.count) send();
+      });
+    }
+  }
+
   function showRoute(route) {
     let found = false;
     sections.forEach(sec => {
@@ -24,6 +40,8 @@
     } else if (window.stopVanta) {
       window.stopVanta();
     }
+
+    trackPage(route); // ADDED
   }
 
   function currentRoute() {
