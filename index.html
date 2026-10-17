@@ -67,9 +67,10 @@
             </div>
 
             <div>
-                <button id="themeToggle" class="btn btn-outline-secondary border-0">
-                    <img id="themIconImage" src="./assets/icons/moon-fill.svg" alt="Dark mode" loading="lazy" width="20" height="20">
-                </button>
+            <button id="themeToggle" class="btn btn-outline-secondary border-0" type="button" aria-label="Switch theme">
+                <img id="themeIconImageMoon" src="./assets/icons/moon-fill.svg" alt="" width="20" height="20">
+                <img id="themeIconImageSun" class="d-none" src="./assets/icons/brightness-high-fill.svg" alt="" width="20" height="20">
+            </button>
 
 
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -237,8 +238,8 @@
  
 
 <script src="./assets/bootstrap-5.3.8-dist/js/bootstrap.bundle.js" defer></script>
-<script src="/assets/themeToggle.js" defer></script>
-<script src="/assets/toggleSectionsAndThemes.js" defer></script>
+<script src="/assets/toggleTheme.js" defer></script>
+<script src="/assets/toggleSections.js" defer></script>
 <script src="/assets/vanta.js" defer></script>
 <script></script>
  <script src="https://cdn.jsdelivr.net/npm/matter-js@0.20.0/build/matter.min.js" defer></script>

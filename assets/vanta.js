@@ -1,24 +1,39 @@
-let vantaEffect = null; // ADDED
+let vantaEffect = null;
+let starting = false;
+let scriptsPromise = null;
 
 function loadScript(src) {
   return new Promise((resolve, reject) => {
     const s = document.createElement("script");
     s.src = src;
     s.onload = resolve;
-    s.onerror = reject;
+    s.onerror = () => reject(new Error("Failed to load: " + src));
     document.head.appendChild(s);
   });
 }
 
-async function initVanta() {
-  if (vantaEffect) return; // ADDED
-  try {
-    if (typeof VANTA === "undefined") { // ADDED: only load the scripts once
+function loadScriptsOnce() {
+  if (typeof VANTA !== "undefined") return Promise.resolve();
+  if (!scriptsPromise) {
+    scriptsPromise = (async () => {
       await loadScript("./assets/three.js");
       await loadScript("./assets/vantaBirds.js");
-    }
+    })().catch(e => { scriptsPromise = null; throw e; });
+  }
+  return scriptsPromise;
+}
 
-    vantaEffect = VANTA.BIRDS({ // CHANGED: saved in a variable
+async function initVanta() {
+  if (vantaEffect || starting) return;
+  starting = true;
+  try {
+    await loadScriptsOnce();
+
+    // the visitor may have left Welcome while the scripts were loading
+    const hash = location.hash.replace("#", "").toLowerCase();
+    if (hash && hash !== "welcome") return;
+
+    vantaEffect = VANTA.BIRDS({
       el: "#Welcome",
       mouseControls: true,
       touchControls: true,
@@ -37,10 +52,11 @@ async function initVanta() {
     });
   } catch (e) {
     console.warn("Vanta failed to load", e);
+  } finally {
+    starting = false;
   }
 }
 
-// ADDED: so the router can start and stop the effect
 window.startVanta = initVanta;
 window.stopVanta = function () {
   if (vantaEffect) {
@@ -49,14 +65,9 @@ window.stopVanta = function () {
   }
 };
 
-// Wait until the page is idle so it doesn't compete with content
-function firstStart() {
-  const hash = location.hash.replace("#", "").toLowerCase(); // ADDED
-  if (!hash || hash === "welcome") initVanta();              // ADDED
-}
-
+// first visit on Welcome (the guard above stops a double start)
 if ("requestIdleCallback" in window) {
-  requestIdleCallback(firstStart, { timeout: 100 });
+  requestIdleCallback(initVanta, { timeout: 100 });
 } else {
-  window.addEventListener("load", () => setTimeout(firstStart, 0));
+  window.addEventListener("load", () => setTimeout(initVanta, 0));
 }
