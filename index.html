@@ -59,16 +59,27 @@
 </head>
 <body>
     
-    <nav class="navbar navbar-expand-xl bg-body-tertiary  fixed-top">
+    <nav class="navbar navbar-expand-xl bg-transparent fixed-top">
         <div class="container-fluid spaced-apart">
             <div class="d-flex align-items-center justify-content-center gap-2">
-                <h1 class="navbar-brand mb-0 h1 fw-bold"><span class="capital-red">V</span><span class="capital-red">D</span></h1>
-                <p class="text-center rounded-pill p-1 h5 mb-0 "><span class="capital-red">Under Construction!</span></p>
+                <a href="#welcome" class="navbar-brand mb-0 h1 fw-bold"><span class="capital-red">V</span><span class="capital-red">D</span></a>
+            </div>
+            <div>
+                <button id="prevPage" class="btn btn-outline-danger border-0 px-2" type="button" aria-label="Previous page">
+                    <svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"/>
+                    </svg>
+                </button>
+                <button id="nextPage" class="btn btn-outline-danger border-0 px-2" type="button" aria-label="Next page">
+                    <svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"/>
+                    </svg>
+                </button>
             </div>
 
             <div>
             <button id="themeToggle" class="btn btn-outline-secondary border-0" type="button" aria-label="Switch theme">
-                <img id="themeIconImageMoon" src="./assets/icons/moon-fill.svg" alt="" width="20" height="20">
+                <img id="themeIconImageMoon" class="" src="./assets/icons/moon-fill.svg" alt="" width="20" height="20">
                 <img id="themeIconImageSun" class="d-none" src="./assets/icons/brightness-high-fill.svg" alt="" width="20" height="20">
             </button>
 
@@ -79,27 +90,32 @@
             </div>
             
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item"><a class="nav-link text-end mx-3" href="#Welcome" data-route="welcome">Welcome</a></li>
-                <li class="nav-item"><a class="nav-link text-end mx-3" href="#blog" data-route="blog">Blog</a></li>
-                <li class="nav-item"><a class="nav-link text-end mx-3" href="#about" data-route="about">About</a></li>
-                <li class="nav-item"><a class="nav-link text-end mx-3" href="#contact" data-route="contact">Contact</a></li>
-                <li class="nav-item"><a class="nav-link text-end mx-3" href="#games" data-route="games">Games</a></li>
-                <li class="nav-item"><a class="nav-link text-end mx-3" href="#curriculum-vitae" data-route="curriculum-vitae">Curriculum Vitae</a></li>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 pt-2 ">
+                <li class="nav-item bg-dark"><a class="nav-link text-end mx-3" href="#Welcome" data-route="welcome">Welcome</a></li>
+                <li class="nav-item bg-dark"><a class="nav-link text-end mx-3" href="#blog" data-route="blog">Blog</a></li>
+                <li class="nav-item bg-dark"><a class="nav-link text-end mx-3" href="#about" data-route="about">About</a></li>
+                <li class="nav-item bg-dark"><a class="nav-link text-end mx-3" href="#contact" data-route="contact">Contact</a></li>
+                <li class="nav-item bg-dark"><a class="nav-link text-end mx-3" href="#games" data-route="games">Games</a></li>
+                <li class="nav-item bg-dark"><a class="nav-link text-end mx-3" href="#curriculum-vitae" data-route="curriculum-vitae">Curriculum Vitae</a></li>
             </ul> 
 
             </div>
         </div>
     </nav>
-    <main id="app" class="pt-5 mt-3"> 
-      
-        <section id="Welcome" class="p-0" data-route="welcome">
-            <header">
+    <main id="app" > 
+                 <!-- <p class=" rounded-pill p-1 h5 mb-0 "><span class="capital-red">Under Construction!</span></p> -->
+
+        <section id="Welcome" class="" data-route="welcome">
+            <header>
                 <div class="hero-bg" aria-hidden="true"></div>
 
-                <div class="hero-content hero-content-bg text-white hero-text">
+                <div class="hero-content hero-content-bg text-white container d-flex flex-column align-items-center justify-content-center text-center vh-100">
+                    <span></span> 
+                    <h1 class="h6">
+                      I'm Vincent du Plessis a <span class="capital-red">W</span>eb Developer from South Africa
+                    </h1>
                     <h2 class="display-4 fw-bold my-4"><span class="capital-red">W</span>elcome to my Site!</h2>
-                    <p class="lead mb-4 fw-bold">I program on the <span class="capital-red">w</span>eb. 
+                    <p class="lead mb-4 fw-bold">
                            Explore my <span class="capital-red">w</span>ork or play a Game.</p>
                     <div class="d-flex justify-content-center gap-2">
                     <a href="#about"  class="btn btn-outline-danger btn-lg">About</a>
@@ -111,7 +127,7 @@
             <!-- server-rendered home content (your hero etc.) -->
         </section>
 
-        <section id="blog" data-route="blog"  class="container overflow-auto h-100" hidden>
+        <section id="blog" data-route="blog"  class="container overflow-auto h-100 p-5 mt-5" hidden>
             <h3 class="display-4 fw-bold my-4"><span class="capital-red">B</span>log</h3>
             <h4>My Origin Story</h4>
             <p>
@@ -145,7 +161,7 @@
             </p>
         </section>
 
-        <section class="container" id="about" data-route="about" hidden>
+        <section class="container pt-5" id="about" data-route="about" hidden>
             
             <h3 class="display-4  fw-bold my-4"><span class="capital-red">A</span>bout</h3>
             <h4>Hi, I'm Vincent a Web Developer from South Africa.</h4>
@@ -161,7 +177,7 @@
     
         </section>
 
-        <section class="container" id="contact" data-route="contact" hidden>
+        <section class="container pt-5" id="contact" data-route="contact" hidden>
             <h3>Contact</h3> 
             <div class="row justify-content-center">
               <div class="col-md-8 col-lg-6">
@@ -213,12 +229,12 @@
             </div>
         </section>
 
-        <section class="container" id="games" data-route="games" hidden>
+        <section class="container pt-5" id="games" data-route="games" hidden>
             <h3>Games</h3>
              <button id="drop-btn" class="btn btn-outline-primary" type="button">Start</button>
 
         </section>  
-        <section class="container" id="curriculum-vitae" data-route="curriculum-vitae" hidden>
+        <section class="container pt-5" id="curriculum-vitae" data-route="curriculum-vitae" hidden>
 
                 <h3>Curriculum Vitae</h3>
                 <iframe class="cv-frame"
@@ -246,5 +262,6 @@
 <script src="/assets/analyticsNotice.js" defer></script>
 <script data-goatcounter="https://vincentduplessis.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
+<script src="/assets/pageArrows.js" defer></script>
 </body>
 </html>
