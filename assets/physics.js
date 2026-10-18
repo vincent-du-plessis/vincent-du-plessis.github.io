@@ -25,6 +25,7 @@ PhysicsButton.addEventListener('click', () => {
   // Lock page scroll first so the floor stays at the bottom of the screen
   document.documentElement.style.overflow = 'hidden';
   document.body.style.overflow = 'hidden';
+  document.documentElement.style.overscrollBehavior = 'none';   // no pull-to-refresh / bounce on phones
 
   const items = [...allElements].map(el => {
     const r = el.getBoundingClientRect();
@@ -43,6 +44,28 @@ PhysicsButton.addEventListener('click', () => {
     // st = the game state of this element
     return { el, body, x0, y0, st: { grabs: 0, flying: false, t0: 0, still: 0 } };
   }).filter(Boolean);
+
+  // ---------- 5 coloured balls (round bodies, work with mouse and touch) ----------
+  const BALL_COLORS = ['#ef4444', '#f59e0b', '#22c55e', '#3b82f6', '#a855f7'];  // red, orange, green, blue, purple
+  const radius = innerWidth < 600 ? 24 : 30;      // a little smaller on phones, still easy to grab
+  BALL_COLORS.forEach((color, i) => {
+    const x0 = innerWidth * (i + 1) / (BALL_COLORS.length + 1);
+    const y0 = scrollY - radius - i * 70;         // start above the screen and rain in
+    const el = document.createElement('div');
+    el.setAttribute('aria-hidden', 'true');
+    Object.assign(el.style, {
+      position: 'fixed',                          // scrolling is locked, so fixed = page position
+      left: (x0 - radius) + 'px', top: (y0 - scrollY - radius) + 'px',
+      width: (radius * 2) + 'px', height: (radius * 2) + 'px', borderRadius: '50%',
+      background: 'radial-gradient(circle at 30% 30%, rgba(255,255,255,.75), ' + color + ' 55%)',
+      boxShadow: '0 2px 6px rgba(0,0,0,.4)', cursor: 'grab', zIndex: '900',
+      touchAction: 'none', userSelect: 'none', webkitUserSelect: 'none', webkitTouchCallout: 'none'
+    });
+    el.draggable = false;
+    document.body.appendChild(el);
+    const body = Bodies.circle(x0, y0, radius, { restitution: 0.7, friction: 0.05 });
+    items.push({ el, body, x0, y0, st: { grabs: 0, flying: false, t0: 0, still: 0 } });
+  });
 
   console.log('dropping', items.length, 'elements');
 
