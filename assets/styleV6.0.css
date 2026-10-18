@@ -43,7 +43,3 @@
 width: 100%; border: none; height: 80vh 
 }
 
-/* hide the theme button while the Welcome section is showing */
-body:has(#Welcome:not([hidden])) #themeToggle {
-  display: none;
-}
