@@ -1,6 +1,6 @@
 .hero-content-bg {
   color: #fff;
-  height: 90vh!important;
+  height: 80vh!important;
 }
 
 .capital-red {
@@ -52,6 +52,6 @@
 .cv-frame {
   display: block;
   width: 100%;
-  height: 65vh;      /* adjust to taste */
+  height: 60vh;      /* adjust to taste */
   border: 0;
 }
