@@ -59,7 +59,7 @@
 </head>
 <body>
     
-    <nav class="navbar navbar-expand-xl fixed-top navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-xl  navbar-dark bg-dark">
         <div class="container-fluid spaced-apart">
             <div class="d-flex align-items-center justify-content-center gap-2">
                 <a href="#welcome" class="navbar-brand mb-0 h1 fw-bold"><span class="capital-red">V</span><span class="capital-red">D</span></a>
@@ -107,7 +107,7 @@
             <header>
                 <div class="hero-bg" aria-hidden="true"></div>
 
-                <div class="hero-content hero-content-bg text-white container d-flex flex-column align-items-center justify-content-center text-center vh-100">
+                <div class="hero-content hero-content-bg text-white container d-flex flex-column align-items-center justify-content-center text-center">
                     <span></span> 
                     <h1 class="h6">
                       I'm Vincent du Plessis a <span class="capital-red">W</span>eb Developer from South Africa
@@ -125,7 +125,7 @@
             <!-- server-rendered home content (your hero etc.) -->
         </section>
 
-        <section id="blog" data-route="blog"  class="container overflow-auto h-100 p-5 mt-5" hidden>
+        <section id="blog" data-route="blog"  class="container overflow-auto h-100" hidden>
             <h3 class="display-4 fw-bold my-4"><span class="capital-red">B</span>log</h3>
             <h4>My Origin Story</h4>
             <p>
@@ -159,81 +159,93 @@
             </p>
         </section>
 
-        <section class="container pt-5" id="about" data-route="about" hidden>
+        <section class="container " id="about" data-route="about" hidden>
             
             <h3 class="display-4  fw-bold my-4"><span class="capital-red">A</span>bout</h3>
             <h4>Hi, I'm Vincent a Web Developer from South Africa.</h4>
             <p class="lead mb-4 p-4">	
                 I Program a lot of front-end code on the web and am fluent in
-				JavaScript, HTML and CSS. 
-                According to the creator of C++ <i>Bjarne Stroustrup</i> every Programmer 
-				should know at the very least 3 Programming languages. I enjoy coding in Python and PHP
-				as well. I Like bare bones code that get the job done. I stick to text book solutions
-				aiming for fast clean efficient code but I do get my hands dirty with bloated | Spaghetti code.
-				If you need help with something Web related or have a Job offer let me know <a href="#contact">here</a>.
+                JavaScript, HTML and CSS. 
+                        According to the creator of C++ <i>Bjarne Stroustrup</i> every Programmer 
+                should know at the very least 3 Programming languages. I enjoy coding in Python and PHP
+                as well. I Like bare bones code that get the job done. I stick to text book solutions
+                aiming for fast clean efficient code but I do get my hands dirty with bloated | Spaghetti code.
+                If you need help with something Web related or have a Job offer let me know <a href="#contact">here</a>.
             </p>
     
         </section>
 
-        <section class="container pt-5" id="contact" data-route="contact" hidden>
-            <h3>Contact</h3> 
-            <div class="row justify-content-center">
-              <div class="col-md-8 col-lg-6">
-                <div class="card shadow-sm">
-                  <div class="card-body p-4">
-                    <h1 class="h3 mb-1">Contact Us</h1>
-                    <p class="text-muted mb-4">Send me a message and I'll get back to you soon.</p>
-        
-                    <div id="success" class="alert alert-success d-none" role="alert">
-                      Thanks! Your message has been sent.
+        <section class="container pt-3" id="contact" data-route="contact" hidden>
+
+       <div class="row justify-content-center">
+          <div class="col-md-8 col-lg-6">
+            <div class="card shadow-sm">
+              <div class="card-body p-4">
+                <h3>Contact me</h3>
+                <p class="text-muted mb-4">Send me a message and I'll get back to you soon.</p>
+
+                <div id="success" class="alert alert-success d-none" role="alert">
+                  Thanks! Your message has been sent.
+                </div>
+                <div id="error" class="alert alert-danger d-none" role="alert">
+                  Something went wrong. Please try again.
+                </div>
+
+                <form action="https://api.web3forms.com/submit" method="POST" id="contactForm" class="needs-validation" novalidate>
+                  <input type="hidden" name="access_key" value="0ef07ffc-63e5-45fe-b758-3e1e2ea8c957">
+                  <!-- Honeypot spam trap: leave hidden and empty -->
+                  <input id="botcheck" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none">
+
+                  <div class="row mb-3">
+                    <label for="name" class="col-sm-3 col-form-label">Name</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="name" name="name" required>
+                      <div class="invalid-feedback">Please enter your name.</div>
                     </div>
-                    <div id="error" class="alert alert-danger d-none" role="alert">
-                      Something went wrong. Please try again.
+                  </div>
+
+                  <div class="row mb-3">
+                    <label for="email" class="col-sm-3 col-form-label">Email</label>
+                    <div class="col-sm-9">
+                      <input type="email" class="form-control" id="email" name="email" required>
+                      <div class="invalid-feedback">Please enter a valid email address.</div>
+                      </div>
                     </div>
-        
-                    <form action="https://api.web3forms.com/submit" method="POST" id="contactForm" class="needs-validation" novalidate>
-                      <input type="hidden" name="access_key" value="0ef07ffc-63e5-45fe-b758-3e1e2ea8c957">
-                      <!-- Honeypot spam trap: leave hidden and empty -->
-                      <input id="botcheck" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off">
-        
-                      <div class="mb-3">
-                        <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="name" name="name" required>
-                        <div class="invalid-feedback">Please enter your name.</div>
-                      </div>
-        
-                      <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
-                        <div class="invalid-feedback">Please enter a valid email address.</div>
-                      </div>
-        
-                      <div class="mb-3">
-                        <label for="subject" class="form-label">Subject</label>
+
+                    <div class="row mb-3">
+                      <label for="subject" class="col-sm-3 col-form-label">Subject</label>
+                      <div class="col-sm-9">
                         <input type="text" class="form-control" id="subject" name="subject">
                       </div>
-        
-                      <div class="mb-3">
-                        <label for="message" class="form-label">Message</label>
-                        <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                    </div>
+
+                    <div class="row mb-3">
+                      <label for="message" class="col-sm-3 col-form-label">Message</label>
+                      <div class="col-sm-9">
+                        <textarea class="form-control" id="message" name="message" rows="3" required></textarea>
                         <div class="invalid-feedback">Please enter a message.</div>
                       </div>
-        
-                      <button type="submit" id="submitBtn" class="btn btn-primary w-100">Send Message</button>
-                    </form>
-                  </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-sm-9 offset-sm-3">
+                        <button type="submit" id="submitBtn" class="btn btn-primary w-100">Send Message</button>
+                      </div>
+                    </div>
+                  </form>
                 </div>
               </div>
             </div>
+          </div>
         </section>
 
-        <section class="container pt-5" id="games" data-route="games" hidden>
+        <section class="container pt-3" id="games" data-route="games" hidden>
             <h3>Games</h3>
              <button id="drop-btn" class="btn btn-outline-primary" type="button">Start</button>
 
         </section>  
-        <section class="container pt-5" id="curriculum-vitae" data-route="curriculum-vitae" hidden>
-
+        <section class="container pt-3 overflow-auto h-100" id="curriculum-vitae" data-route="curriculum-vitae" hidden>
+              <div>
                 <h3>Curriculum Vitae</h3>
                 <iframe class="cv-frame"
                         src="./assets/Vincent%20du%20Plessis%E2%80%99s%20Curriculum%20Vitae%20%282%29.pdf#view=FitH"
@@ -242,6 +254,9 @@
                     <a href="./assets/Vincent%20du%20Plessis%E2%80%99s%20Curriculum%20Vitae%20%281%29.pdf" download>Download my CV (PDF)</a>
                 </p>
    
+              </div>
+      
+
 
         </section>
 
