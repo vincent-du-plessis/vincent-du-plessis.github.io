@@ -127,7 +127,7 @@
             <!-- server-rendered home content (your hero etc.) -->
         </section>
 
-        <section id="blog" data-route="blog"  class="container overflow-auto h-100" hidden>
+        <section id="blog" data-route="blog"  class="container" hidden>
             <h3 class="display-4 fw-bold my-4"><span class="capital-red">B</span>log</h3>
             <h4>My Origin Story</h4>
             <p>
@@ -177,13 +177,45 @@
     
         </section>
 
-        <section class="container pt-3" id="contact" data-route="contact" hidden>
+        <section class="container pt-3 m-3" id="contact" data-route="contact" hidden>
 
        <div class="row justify-content-center">
           <div class="col-md-8 col-lg-6">
             <div class="card shadow-sm">
               <div class="card-body p-4">
-                <h3>Contact me</h3>
+                <h3 class="text-center">Contact me</h3>
+
+
+                <div class="contact-icons d-flex justify-content-center gap-4 m-4">
+
+                  <!-- WhatsApp: number in international format, digits only (no +, spaces or leading 0) -->
+                  <a href="https://wa.me/27XXXXXXXXX" target="_blank" rel="noopener noreferrer"
+                    aria-label="Message me on WhatsApp" title="WhatsApp">
+                    <img src="./assets/icons/whatsapp.svg" alt="" width="40" height="40">
+                  </a>
+
+                  <!-- Gmail: opens a compose window addressed to you -->
+                  <a href="https://mail.google.com/mail/?view=cm&fs=1&to=vinduples@gmail.com"
+                    target="_blank" rel="noopener noreferrer"
+                    aria-label="Email me on Gmail" title="Email">
+                    <img src="./assets/icons/envelope-at-fill.svg" alt="" width="40" height="40">
+                  </a>
+
+                  <!-- GitHub -->
+                  <a href="https://github.com/vincent-du-plessis" target="_blank" rel="noopener noreferrer"
+                    aria-label="My GitHub profile" title="GitHub">
+                    <img src="./assets/icons/github.svg" alt="" width="40" height="40">
+                  </a>
+
+                  <!-- LinkedIn -->
+                  <a href="https://www.linkedin.com/in/vincent-du-plessis" target="_blank" rel="noopener noreferrer"
+                    aria-label="My LinkedIn profile" title="LinkedIn">
+                    <img src="./assets/icons/linkedin.svg" alt="" width="40" height="40">
+                  </a>
+
+                </div>
+
+
                 <p class="text-muted mb-4">Send me a message and I'll get back to you soon.</p>
 
                 <div id="success" class="alert alert-success d-none" role="alert">
@@ -241,7 +273,7 @@
           </div>
         </section>
 
-        <section class="container pt-3" id="games" data-route="games" hidden>
+        <section class="container pt-3 vh-100" id="games" data-route="games" hidden>
             <h3>Games</h3>
              <button id="drop-btn" class="btn btn-outline-primary" type="button">Start</button>
 
@@ -258,16 +290,208 @@
    
               </div>
       
-
-
         </section>
+        <!-- ========== PRIVACY POLICY ========== -->
+        <section data-route="privacy" hidden>
+          <div class="legal-page mx-auto py-4">
+            <h3>Privacy Policy</h3>
+            <p class="text-muted small">Last updated: 19 October 2026</p>
+
+            <p>This website is a personal portfolio run by Vincent du Plessis in South Africa. This policy explains what personal information is collected when you use it, why, and what your rights are under the Protection of Personal Information Act (POPIA) and, where it applies, the GDPR.</p>
+
+            <h5 class="mt-4">1. What I collect</h5>
+            <p class="mb-1"><strong>Contact form.</strong> If you send a message, I receive your name, email address, subject (if you give one) and the message itself. You choose what to include.</p>
+            <p class="mb-1"><strong>Page view statistics.</strong> I use GoatCounter, a privacy-friendly analytics service, to count visits. It records which page was viewed, the page title, the referring site, and general technical details such as browser, screen size and country. It does not use cookies and does not build profiles of individual visitors.</p>
+            <p><strong>Server logs.</strong> The hosting provider (YOUR_HOST) may keep standard technical logs, such as IP address and time of request, for security and reliability.</p>
+
+            <h5 class="mt-4">2. Why I collect it</h5>
+            <ul>
+              <li>To read and reply to messages you send me.</li>
+              <li>To understand which parts of the site are used so I can improve it.</li>
+              <li>To keep the site secure and working.</li>
+            </ul>
+
+            <h5 class="mt-4">3. Who processes it</h5>
+            <p>Contact form messages are handled by <strong>Web3Forms</strong>, which delivers them to my inbox. Analytics are provided by <strong>GoatCounter</strong>. These services may process data outside South Africa. I do not sell your information or use it for marketing, and I only share it with these service providers so the site can work.</p>
+
+            <h5 class="mt-4">4. How long I keep it</h5>
+            <p>Messages are kept only as long as needed to deal with your enquiry, and no longer than 12 months unless we are in ongoing contact. Analytics data is aggregated and contains no personal details.</p>
+
+            <h5 class="mt-4">5. Your rights</h5>
+            <p>You may ask to see the personal information I hold about you, have it corrected or deleted, or object to its processing. Email me at <a href="mailto:vinduples@gmail.com">vinduples@gmail.com</a> and I will respond within a reasonable time. If you are unhappy with how I handle your information, you can complain to South Africa's Information Regulator (<a href="https://inforegulator.org.za" target="_blank" rel="noopener noreferrer">inforegulator.org.za</a>).</p>
+
+            <h5 class="mt-4">6. Security</h5>
+            <p>I take reasonable steps to protect information, but no method of transmission over the internet is completely secure.</p>
+
+            <h5 class="mt-4">7. Third-party content</h5>
+            <p>Some site resources (such as fonts, scripts or icons) may load from external servers, which can see your IP address when your browser requests them. Links to other websites, such as GitHub and LinkedIn, are governed by those sites' own policies.</p>
+
+            <h5 class="mt-4">8. Changes</h5>
+            <p>I may update this policy from time to time. The date at the top shows when it last changed.</p>
+          </div>
+        </section>
+
+        <!-- ========== COOKIE NOTICE ========== -->
+        <section data-route="cookies" hidden>
+          <div class="legal-page mx-auto py-4">
+            <h3>Cookie Notice</h3>
+            <p class="text-muted small">Last updated: 19 October 2026</p>
+
+            <p>This site does not use tracking or advertising cookies, so there is no cookie banner to accept.</p>
+
+            <h5 class="mt-4">Analytics</h5>
+            <p>Visits are counted with GoatCounter, which works without cookies and does not follow you across websites or identify you personally.</p>
+
+            <h5 class="mt-4">Local storage</h5>
+            <p>The site may save your light or dark theme choice in your browser's local storage so it is remembered next time. This stays on your device, is not sent to me, and does not track you. You can clear it at any time in your browser settings.</p>
+
+            <h5 class="mt-4">Third parties</h5>
+            <p>The contact form is processed by Web3Forms. If that service sets any cookies of its own, they are covered by its policy rather than this one.</p>
+
+            <h5 class="mt-4">Managing cookies and storage</h5>
+            <p>You can block or delete cookies and stored site data in your browser settings. The site works normally either way, apart from not remembering your theme.</p>
+          </div>
+        </section>
+
+        <!-- ========== TERMS OF USE ========== -->
+        <section data-route="terms" hidden>
+          <div class="legal-page mx-auto py-4">
+            <h3>Terms of Use</h3>
+            <p class="text-muted small">Last updated: 19 October 2026</p>
+
+            <p>By using this website you agree to these terms. If you do not agree, please do not use the site.</p>
+
+            <h5 class="mt-4">1. About this site</h5>
+            <p>This is a personal portfolio showing my background, experience and projects. It is provided for general information only.</p>
+
+            <h5 class="mt-4">2. Intellectual property</h5>
+            <p>Unless stated otherwise, the content of this site, including text, design, code written by me, and my CV, belongs to Vincent du Plessis. You may view and share links to it, but please do not copy, republish or pass off my work as your own without permission. Third-party libraries and icons remain the property of their respective owners and are used under their own licences.</p>
+
+            <h5 class="mt-4">3. Acceptable use</h5>
+            <p>You agree not to:</p>
+            <ul>
+              <li>use the contact form to send spam, abusive, unlawful or malicious content;</li>
+              <li>try to disrupt, attack or gain unauthorised access to the site;</li>
+              <li>scrape or copy the site in bulk without permission.</li>
+            </ul>
+
+            <h5 class="mt-4">4. Accuracy of information</h5>
+            <p>I try to keep the content accurate and up to date, but I make no guarantee that it is complete or current. Information such as my CV and project details may change without notice.</p>
+
+            <h5 class="mt-4">5. No warranty and limitation of liability</h5>
+            <p>The site is provided "as is" without warranties of any kind. To the extent allowed by law, I am not liable for any loss or damage arising from your use of the site or from relying on its content, or from any website I link to.</p>
+
+            <h5 class="mt-4">6. External links</h5>
+            <p>This site links to services such as GitHub, LinkedIn and WhatsApp. I do not control those sites and am not responsible for their content or practices.</p>
+
+            <h5 class="mt-4">7. Changes</h5>
+            <p>I may change these terms at any time. Continued use of the site means you accept the updated terms.</p>
+
+            <h5 class="mt-4">8. Governing law</h5>
+            <p>These terms are governed by the laws of the Republic of South Africa.</p>
+
+            <h5 class="mt-4">9. Contact</h5>
+            <p>Questions about these terms can be sent to <a href="mailto:vinduples@gmail.com">vinduples@gmail.com</a>.</p>
+          </div>
+        </section>
+
+        <!-- ========== ACCESSIBILITY STATEMENT ========== -->
+        <section data-route="accessibility" hidden>
+          <div class="legal-page mx-auto py-4">
+            <h3>Accessibility Statement</h3>
+            <p class="text-muted small">Last updated: 19 October 2026</p>
+
+            <p>I want this website to be usable by as many people as possible, including people who use assistive technology. I aim to follow the Web Content Accessibility Guidelines (WCAG) 2.1 at level AA.</p>
+
+            <h5 class="mt-4">What I do</h5>
+            <ul>
+              <li>Use semantic HTML and labelled form fields so screen readers can navigate the site.</li>
+              <li>Provide text labels for icon links, such as GitHub, LinkedIn, WhatsApp and email.</li>
+              <li>Support keyboard navigation, with visible focus on links and buttons.</li>
+              <li>Offer light and dark themes, and a layout that adapts to phones, tablets and desktops.</li>
+              <li>Offer my CV as a downloadable PDF as well as an embedded view.</li>
+            </ul>
+
+            <h5 class="mt-4">Known limitations</h5>
+            <ul>
+              <li>The animated background on the welcome page is decorative. It may be distracting to some people, and it can't be hidden if your device is set to reduce motion. I apologize for any inconvenience.</li>
+              <li>The embedded CV viewer depends on your browser's PDF support. If it does not work for you, use the download link.</li>
+              <li>I am not able to guarantee that every page meets every requirement, and some content may not yet be fully accessible.</li>
+            </ul>
+
+            <h5 class="mt-4">Feedback</h5>
+            <p>If you find something on this site hard to use, or need information in a different format, please email <a href="mailto:vinduples@gmail.com">vinduples@gmail.com</a>. Tell me which page and what the problem was, and I will do my best to fix it.</p>
+          </div>
+        </section>
+
 
     </main>
 
-   
+    <footer class="site-footer bg-body border-top mt-auto py-4">
+    <div class="container">
+      <div class="row gy-4">
+
+        <!-- Brand + icons -->
+        <div class="col-12 col-md-4">
+          <h6 class="fw-bold mb-2">Vincent du Plessis</h6>
+          <p class="small text-muted mb-3">Thanks for visiting. Get in touch any time.</p>
+          <div class="footer-icons d-flex gap-3">
+            <a href="https://wa.me/27845506227" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" title="WhatsApp">
+              <img src="./assets/icons/whatsapp.svg" alt="" width="24" height="24">
+            </a>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=vinduples@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Email" title="Email">
+              <img src="./assets/icons/envelope-at-fill.svg" alt="" width="24" height="24">
+            </a>
+            <a href="https://github.com/vincent-du-plessis" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub">
+              <img src="./assets/icons/github.svg" alt="" width="24" height="24">
+            </a>
+            <a href="https://www.linkedin.com/in/vincent-du-plessis" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn">
+              <img src="./assets/icons/linkedin.svg" alt="" width="24" height="24">
+            </a>
+          </div>
+        </div>
+
+        <!-- Pages -->
+        <div class="col-6 col-md-4">
+          <h6 class="fw-bold mb-2">Pages</h6>
+          <ul class="list-unstyled small mb-0">
+            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#welcome" data-route="Welcome">Welcome</a></li>
+            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#blog" data-route="blog">Blog</a></li>
+            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#about" data-route="about">About</a></li>
+            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#contact" data-route="contact">Contact</a></li>
+            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#games" data-route="games">Games</a></li>
+            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#curriculum-vitae" data-route="curriculum-vitae">Curriculum Vitae</a></li>
+          </ul>
+        </div>
+
+        <!-- Legal -->
+        <div class="col-6 col-md-4">
+          <h6 class="fw-bold mb-2">Legal</h6>
+          <ul class="list-unstyled small mb-0">
+            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#privacy" data-route="privacy">Privacy Policy</a></li>
+            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#cookies" data-route="cookies">Cookie Notice</a></li>
+            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#terms" data-route="terms">Terms of Use</a></li>
+            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#accessibility" data-route="accessibility">Accessibility</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <hr class="my-4">
+
+      <div class="d-flex flex-column flex-sm-row justify-content-between small text-muted">
+        <span>&copy; <span id="footerYear"></span> Vincent du Plessis. All rights reserved.</span>
+        <a class="link-secondary text-decoration-none" href="#welcome" aria-label="Back to start">Back to start</a>
+      </div>
+    </div>
+  </footer>  
 
  
+<script>
+  // Set the current year in the footer
+  document.getElementById('footerYear').textContent = new Date().getFullYear();
 
+</script>
 <script src="./assets/bootstrap-5.3.8-dist/js/bootstrap.bundle.js" defer></script>
 <script src="/assets/toggleTheme.js" defer></script>
 <script src="/assets/toggleSections.js" defer></script>
