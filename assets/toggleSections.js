@@ -42,6 +42,8 @@
     }
 
     trackPage(route); // ADDED
+
+    window.scrollTo(0, 0);
   }
 
   function currentRoute() {
