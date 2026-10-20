@@ -1,6 +1,6 @@
 .hero-content-bg {
   color: #fff;
-  height: 90vh!important;
+  height: 100vh!important;
 }
 
 .capital-red {
@@ -17,7 +17,7 @@
   background: #ffffff00;
 }
 main#app > section {
-  width: 100%;
+  width: 100vw;
 }
 .hero-text {
         /* mobile: nearly full width, small gap each side */  /* never wider than this */ 

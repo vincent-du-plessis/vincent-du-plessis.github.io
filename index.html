@@ -105,7 +105,7 @@
     <main id="app" class="d-flex justify-content-center align-items-center"> 
                  <!-- <p class=" rounded-pill p-1 h5 mb-0 "><span class="capital-red">Under Construction!</span></p> -->
 
-        <section id="Welcome" class="" data-route="welcome">
+        <section id="Welcome" class="mb-5" data-route="welcome">
             <header>
                 <div class="hero-bg" aria-hidden="true"></div>
 
@@ -127,41 +127,40 @@
             <!-- server-rendered home content (your hero etc.) -->
         </section>
 
-        <section id="blog" data-route="blog"  class="container" hidden>
+        <section class="container mb-5" id="blog" data-route="blog" hidden>
             <h3 class="display-4 fw-bold my-4"><span class="capital-red">B</span>log</h3>
             <h4>My Origin Story</h4>
+
             <p>
-                In the start of the 2019 pandemic I was introduced to Web development.
-                 I learned the fundamentals HTML/CSS and JavaScript. I learned to 
-                 touch type in the early days of my journey currently typing 56 
-                 words per minute on average which makes Software Development easier 
-                 to learn and discourages burnout. 
-               
-                 I came across quite a few 
-                 technologies in the build up to where I am now. Open source and 
-                 the freedom to learn on the Web makes the barrier of entry small 
-                 for anyone to obtain awesome skills. I started small I found a PC 
-                 in my parents' garage and turned it on. I got greeted with a BIOS 
-                 post message "Missing boot device" and I found a HDD drive that 
-                 connects with a PATA cable and plugged it in. 
-                 Somehow got Windows XP running even though the jumper selection on the 
-                 drive gave me trouble. 
-             
-                 But like most achievements in life it's not possible with the help from others. 
-                 A friend got Windows 10 up and running on my machine and online. 
-                 But most importantly morphed my YouTube algorithm for the better by sending me upwards of 50 links to tutorials on Web Development. 
-            
-                 Armed with a GEN 2 PC and a Whole lot of tutorials I weathered the storm of mundane HTML interesting CSS and exhilarating JavaScript tutorials. 
-                 Not soon after I installed Linux on one of my drives and my opensource fandom started. 
-                 I studied long and hard with absolute mavericks of software Engineering to look up to and guide me on my journey online. 
-                 I could with confidence call myself a Web Developer the day I made a single page for an online newspaper company, mirroring their whole site’s 
-                 CSS/HTML by hand and improving a little of it without causing suspicion. As for my future it might come at a fork. I have a few Software Engineers I look up to pulling me in different Directions. What should my second Programming language be C++ or C#? 
-                 I’m in no rush to make this decision. var's are var's, loops are loops and OOP is OOP. 
-                 I know I would be happy with either one and I will probably circle back to the other. Enough about me. : ) If you are looking for a Web developer Contact me I would be glad to make your acquaintance. Thanks for reading. Have a Stellar day!
+              At the start of the 2019 pandemic, I was introduced to web development. I learned the fundamentals: HTML, CSS and JavaScript. Early on, I also taught myself to touch type, and I now average 56 words per minute. That makes software development easier to learn and helps keep burnout away.
+            </p>
+
+            <p>
+              I came across quite a few technologies in the build-up to where I am now. Open source and the freedom to learn on the web make the barrier to entry small for anyone who wants awesome skills. I started small. I found a PC in my parents' garage and turned it on, and it greeted me with a BIOS message: "Missing boot device." I found an HDD that connects with a PATA cable and plugged it in. After some trouble with the jumper settings on the drive, I somehow got Windows XP running.
+            </p>
+
+            <p>
+              Like most achievements in life, this wasn't possible without help from others. A friend got Windows 10 up and running on my machine and online. Most importantly, he improved my YouTube algorithm by sending me upwards of 50 links to web development tutorials.
+            </p>
+
+            <p>
+              Armed with a Gen 2 PC and a whole lot of tutorials, I weathered the storm of mundane HTML, interesting CSS and exhilarating JavaScript. Not long after, I installed Linux on one of my drives and my open-source fandom began. I studied long and hard, with absolute mavericks of software engineering to look up to and guide me on my journey online.
+            </p>
+
+            <p>
+              I could call myself a web developer with confidence the day I made a single page for an online newspaper company. I mirrored their whole site's HTML and CSS by hand and improved a little of it along the way.
+            </p>
+
+            <p>
+              As for my future, it might come at a fork. A few software engineers I look up to are pulling me in different directions, and I'm wondering whether my second programming language should be C++ or C#. I'm in no rush to decide. Vars are vars, loops are loops and OOP is OOP. I know I'd be happy with either, and I'll probably circle back to the other.
+            </p>
+
+            <p>
+              Enough about me. :) If you're looking for a web developer, please <a href="#contact">contact me</a>. I'd be glad to make your acquaintance. Thanks for reading, and have a stellar day!
             </p>
         </section>
 
-        <section class="container " id="about" data-route="about" hidden>
+        <section class="container mb-5" id="about" data-route="about" hidden>
             
             <h3 class="display-4  fw-bold my-4"><span class="capital-red">A</span>bout</h3>
             <h4>Hi, I'm Vincent, a Web Developer from South Africa.</h4>
@@ -177,7 +176,7 @@
     
         </section>
 
-        <section class="container pt-3 m-3" id="contact" data-route="contact" hidden>
+        <section class="container pt-3 m-3 mb-5" id="contact" data-route="contact" hidden>
 
        <div class="row justify-content-center">
           <div class="col-md-8 col-lg-6">
@@ -224,26 +223,24 @@
                 <div id="error" class="alert alert-danger d-none" role="alert">
                   Something went wrong. Please try again.
                 </div>
+                  <form action="https://api.web3forms.com/submit" method="POST" id="contactForm" class="needs-validation" novalidate>
+                    <input type="hidden" name="access_key" value="0ef07ffc-63e5-45fe-b758-3e1e2ea8c957">
+                    <input type="hidden" name="redirect" value="https://vincentduplessis.co.za/#contact">
+                    <!-- Honeypot spam trap: leave hidden and empty -->
+                    <input id="botcheck" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none">
 
-                <form action="https://api.web3forms.com/submit" method="POST" id="contactForm" class="needs-validation" novalidate>
-                  <input type="hidden" name="access_key" value="0ef07ffc-63e5-45fe-b758-3e1e2ea8c957">
-                  <input type="hidden" name="redirect" value="https://vincentduplessis.co.za/#contact">
-                  <!-- Honeypot spam trap: leave hidden and empty -->
-                  <input id="botcheck" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none">
-
-                  <div class="row mb-3">
-                    <label for="name" class="col-sm-3 col-form-label">Name</label>
-                    <div class="col-sm-9">
-                      <input type="text" class="form-control" id="name" name="name" required>
-                      <div class="invalid-feedback">Please enter your name.</div>
+                    <div class="row mb-3">
+                      <label for="name" class="col-sm-3 col-form-label">Name</label>
+                      <div class="col-sm-9">
+                        <input type="text" class="form-control" id="name" name="name">
+                      </div>
                     </div>
-                  </div>
 
-                  <div class="row mb-3">
-                    <label for="email" class="col-sm-3 col-form-label">Email</label>
-                    <div class="col-sm-9">
-                      <input type="email" class="form-control" id="email" name="email" required>
-                      <div class="invalid-feedback">Please enter a valid email address.</div>
+                    <div class="row mb-3">
+                      <label for="email" class="col-sm-3 col-form-label">Email</label>
+                      <div class="col-sm-9">
+                        <input type="email" class="form-control" id="email" name="email" required>
+                        <div class="invalid-feedback">Please enter a valid email address.</div>
                       </div>
                     </div>
 
@@ -257,8 +254,7 @@
                     <div class="row mb-3">
                       <label for="message" class="col-sm-3 col-form-label">Message</label>
                       <div class="col-sm-9">
-                        <textarea class="form-control" id="message" name="message" rows="3" required></textarea>
-                        <div class="invalid-feedback">Please enter a message.</div>
+                        <textarea class="form-control" id="message" name="message" rows="3"></textarea>
                       </div>
                     </div>
 
@@ -274,12 +270,12 @@
           </div>
         </section>
 
-        <section class="container pt-3 vh-100" id="games" data-route="games" hidden>
+        <section class="container pt-3 vh-100 mb-5" id="games" data-route="games" hidden>
             <h3>Games</h3>
              <button id="drop-btn" class="btn btn-outline-primary" type="button">Start</button>
 
         </section>  
-        <section class="container pt-3 overflow-auto h-100" id="curriculum-vitae" data-route="curriculum-vitae" hidden>
+        <section class="container pt-3 overflow-auto h-100 mb-5" id="curriculum-vitae" data-route="curriculum-vitae" hidden>
               <div>
                 <h3>Curriculum Vitae</h3>
                 <iframe class="cv-frame"
@@ -293,7 +289,7 @@
       
         </section>
         <!-- ========== PRIVACY POLICY ========== -->
-        <section data-route="privacy" hidden>
+        <section class="container mb-5" data-route="privacy" hidden>
           <div class="legal-page mx-auto py-4 px-3">
             <h3>Privacy Policy</h3>
             <p class="text-muted small">Last updated: 19 October 2026</p>
@@ -333,7 +329,7 @@
         </section>
 
         <!-- ========== COOKIE NOTICE ========== -->
-        <section data-route="cookies" hidden>
+        <section class="container mb-5" data-route="cookies" hidden>
           <div class="legal-page mx-auto py-4 px-3">
             <h3>Cookie Notice</h3>
             <p class="text-muted small">Last updated: 19 October 2026</p>
@@ -355,7 +351,7 @@
         </section>
 
         <!-- ========== TERMS OF USE ========== -->
-        <section data-route="terms" hidden>
+        <section class="container mb-5" data-route="terms" hidden>
           <div class="legal-page mx-auto py-4 px-3">
             <h3>Terms of Use</h3>
             <p class="text-muted small">Last updated: 19 October 2026</p>
@@ -397,7 +393,7 @@
         </section>
 
         <!-- ========== ACCESSIBILITY STATEMENT ========== -->
-        <section data-route="accessibility" hidden>
+        <section class="container mb-5" data-route="accessibility" hidden>
           <div class="legal-page mx-auto py-4 px-3">
             <h3>Accessibility Statement</h3>
             <p class="text-muted small">Last updated: 19 October 2026</p>
@@ -428,7 +424,7 @@
 
     </main>
 
-    <footer class="site-footer bg-body border-top mt-auto py-4">
+    <footer class="site-footer bg-body border-top mt-5 py-5">
     <div class="container">
       <div class="row gy-4">
 
@@ -505,5 +501,6 @@
            async src="https://gc.zgo.at/count.js"></script>
 <script src="./assets/pageArrows.js" defer></script>
 <script src="./assets/tooltips.js" defer></script>
+<script src="./assets/wwwScroll.js" defer></script>
 </body>
 </html>
