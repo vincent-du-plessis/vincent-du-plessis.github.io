@@ -16,7 +16,9 @@
 .ooo{
   background: #ffffff00;
 }
-
+main#app > section {
+  width: 100%;
+}
 .hero-text {
         /* mobile: nearly full width, small gap each side */  /* never wider than this */ 
   padding-top: 19%;  

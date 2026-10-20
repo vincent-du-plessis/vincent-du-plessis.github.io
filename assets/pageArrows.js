@@ -12,11 +12,6 @@
     return (location.hash || '#welcome').replace('#', '').toLowerCase();
   }
 
-  function currentIndex() {
-    const i = routes.indexOf(currentRoute());
-    return i === -1 ? 0 : i;
-  }
-
   // show the current page name between the arrows
   function updateLabel() {
     if (!label) return;
@@ -29,12 +24,34 @@
 
   // step = -1 (previous) or 1 (next); wraps around at both ends
   function go(step) {
-    const i = (currentIndex() + step + routes.length) % routes.length;
+    const idx = routes.indexOf(currentRoute());
+    let i;
+    if (idx === -1) {
+      // on a legal page (not in the navbar): next = first page, previous = last page
+      i = step > 0 ? 0 : routes.length - 1;
+    } else {
+      i = (idx + step + routes.length) % routes.length;
+    }
     location.hash = '#' + routes[i];
   }
 
   prev.addEventListener('click', () => go(-1));
   next.addEventListener('click', () => go(1));
+
+  // scroll wheel / trackpad over the arrows and page name switches pages
+  const picker = prev.parentElement;   // the div holding the arrows and the page name
+  let wheelLocked = false;
+
+  picker.addEventListener('wheel', (e) => {
+    e.preventDefault();                 // don't scroll the page while over the picker
+    if (wheelLocked || Math.abs(e.deltaY) < 4) return;
+
+    go(e.deltaY > 0 ? 1 : -1);          // scroll down = next, scroll up = previous
+
+    // one page per scroll gesture; trackpads fire many events per swipe
+    wheelLocked = true;
+    setTimeout(() => { wheelLocked = false; }, 350);
+  }, { passive: false });
 
   window.addEventListener('hashchange', updateLabel);
   updateLabel();
