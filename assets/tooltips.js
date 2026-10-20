@@ -8,8 +8,7 @@
     subject:   'What your message is about (optional)',
     message:   'Write your message here',
     submitBtn: 'Send your message',
-    'drop-btn': 'Start the game',
-    pageName:  'Scroll through pages'
+    'drop-btn': 'Start the game'
   };
 
   // turn "#curriculum-vitae" into "Curriculum Vitae"
