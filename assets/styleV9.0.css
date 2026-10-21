@@ -112,3 +112,11 @@ main#app > section {
     color: var(--bs-danger) !important;
     text-decoration-color: var(--bs-danger);
   }
+
+  body {
+  cursor: url('./Images/mouse.png') 4 4, auto;
+}
+
+a, button, [data-bs-toggle], label[for], input[type="submit"] {
+  cursor: url('./Images/mouse.png') 4 4, pointer;
+}
