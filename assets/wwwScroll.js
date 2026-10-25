@@ -43,6 +43,7 @@
   const startScale = [];
   const base = [];          // where each W sits in the page (document coordinates)
   let letterW = 0;          // width of one lowercase "w" at FINAL_SIZE
+  let centerX = 0;          // cached horizontal centre of the viewport
   let start = START;        // scroll position where the animation begins (lowered on short pages)
   let dist = DISTANCE;      // scroll distance the animation takes
   let cur = 0;              // smoothed progress, 0 to 1
@@ -50,27 +51,44 @@
   let lastT = 0;
 
   // measure everything once (not on every frame)
+  // all reads happen first, then all writes, to avoid forced reflows
   function sync() {
     if (section.hidden) return;
 
-    sources.forEach((src, i) => {
-      const cs = getComputedStyle(src);
-      clones[i].style.fontFamily = cs.fontFamily;
-      clones[i].style.fontWeight = cs.fontWeight;
-      clones[i].style.fontSize   = cs.fontSize;
-      startScale[i] = FINAL_SIZE / parseFloat(cs.fontSize);
+    // ---- READ PHASE (no DOM changes) ----
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
+    const maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+    centerX = document.documentElement.clientWidth / 2;
 
+    const info = sources.map(src => {
+      const cs = getComputedStyle(src);
       const r = src.getBoundingClientRect();
-      base[i] = { x: r.left + window.scrollX, y: r.top + window.scrollY };
+      return {
+        fontFamily: cs.fontFamily,
+        fontWeight: cs.fontWeight,
+        fontSize: cs.fontSize,
+        x: r.left + scrollX,
+        y: r.top + scrollY
+      };
+    });
+
+    // ---- WRITE PHASE ----
+    info.forEach((d, i) => {
+      clones[i].style.fontFamily = d.fontFamily;
+      clones[i].style.fontWeight = d.fontWeight;
+      clones[i].style.fontSize   = d.fontSize;
+      startScale[i] = FINAL_SIZE / parseFloat(d.fontSize);
+      base[i] = { x: d.x, y: d.y };
     });
 
     // width of a lowercase "w" in the first W's font, scaled to the final size
+    // (the one unavoidable measurement, so it is done last)
     const probe = document.createElement('span');
     probe.textContent = 'w';
-    const cs0 = getComputedStyle(sources[0]);
     Object.assign(probe.style, {
       position: 'fixed', left: '0', top: '0', visibility: 'hidden', whiteSpace: 'nowrap',
-      fontFamily: cs0.fontFamily, fontWeight: cs0.fontWeight, fontSize: cs0.fontSize
+      fontFamily: info[0].fontFamily, fontWeight: info[0].fontWeight, fontSize: info[0].fontSize
     });
     document.body.appendChild(probe);
     letterW = probe.getBoundingClientRect().width * startScale[0];
@@ -78,7 +96,6 @@
 
     // the page may not scroll as far as START + DISTANCE: pull the start (and length)
     // down so the animation can still finish when you reach the bottom
-    const maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
     dist  = Math.max(20, Math.min(DISTANCE, maxScroll * 0.5));
     start = Math.max(0, Math.min(START, maxScroll - dist));
   }
@@ -102,8 +119,7 @@
     const t = Math.min(1, Math.max(0, (p - 0.3) / 0.4));        // capital -> lowercase crossfade
     const fade = Math.min(1, p * 6);                            // fade in quickly as it leaves the page
 
-    const cx = document.documentElement.clientWidth / 2;
-    const startX = cx - (letterW * 3) / 2;
+    const startX = centerX - (letterW * 3) / 2;
 
     sources.forEach((src, i) => {
       const fromX = base[i].x - window.scrollX;                 // where the W is on screen right now
