@@ -1,9 +1,3 @@
-// ---- settings ----
-const SKIP_ON_SMALL_SCREENS = false;  // true = no birds on phones (faster mobile score)
-const RESPECT_REDUCED_MOTION = false; // true = no birds if the device is set to reduce motion
-const SMALL_SCREEN_QUERY = "(max-width: 768px)";
-const BIRD_QUANTITY = 3;              // default is 5, lower = cheaper
-
 let vantaEffect = null;
 let starting = false;
 let scriptsPromise = null;
@@ -29,15 +23,8 @@ function loadScriptsOnce() {
   return scriptsPromise;
 }
 
-function shouldSkipVanta() {
-  if (RESPECT_REDUCED_MOTION && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return true;
-  if (SKIP_ON_SMALL_SCREENS && window.matchMedia(SMALL_SCREEN_QUERY).matches) return true;
-  return false;
-}
-
 async function initVanta() {
   if (vantaEffect || starting) return;
-  if (shouldSkipVanta()) return;
   starting = true;
   try {
     await loadScriptsOnce();
@@ -62,7 +49,6 @@ async function initVanta() {
       wingSpan: 13.00,
       speedLimit: 1.00,
       separation: 50.00,
-      quantity: BIRD_QUANTITY,
     });
   } catch (e) {
     console.warn("Vanta failed to load", e);
@@ -79,17 +65,9 @@ window.stopVanta = function () {
   }
 };
 
-// first visit on Welcome: start once the page has loaded and the browser is idle
-function scheduleFirstStart() {
-  if ("requestIdleCallback" in window) {
-    requestIdleCallback(initVanta, { timeout: 2000 });
-  } else {
-    setTimeout(initVanta, 500);
-  }
-}
-
-if (document.readyState === "complete") {
-  scheduleFirstStart();
+// first visit on Welcome (the guard above stops a double start)
+if ("requestIdleCallback" in window) {
+  requestIdleCallback(initVanta, { timeout: 100 });
 } else {
-  window.addEventListener("load", scheduleFirstStart, { once: true });
+  window.addEventListener("load", () => setTimeout(initVanta, 0));
 }
